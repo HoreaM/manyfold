@@ -43,7 +43,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "standard", "~> 1.41.1"
   gem "factory_bot"
-  gem "faker", "~> 3.4"
+  gem "faker", "~> 3.5"
   gem "guard", "~> 2.18"
   gem "guard-rspec", "~> 4.7"
   gem "database_cleaner-active_record", "~> 2.2"
@@ -97,7 +97,7 @@ gem "sqlite3_ar_regexp", github: "manyfold3d/sqlite3_ar_regexp", ref: "rails-7.1
 
 gem "mittsu", github: "manyfold3d/mittsu", ref: "manyfold"
 
-gem "view_component", "~> 3.17"
+gem "view_component", "~> 3.18"
 
 gem "rails-controller-testing", "~> 1.0", group: :test
 
@@ -139,7 +139,7 @@ gem "sidekiq-scheduler", github: "manyfold3d/sidekiq-scheduler", branch: "fix-dy
 gem "sys-filesystem", "~> 1.5"
 gem "shrine", "~> 3.6"
 
-gem "aws-sdk-s3", "~> 1.168"
+gem "aws-sdk-s3", "~> 1.169"
 
 gem "better_content_security_policy", "~> 0.1.4"
 

@@ -38,6 +38,7 @@ es:
         notes: Descripción
         path: Ruta
         preview_file: Vista previa
+        sensitive:
         tags: Etiquetas
       model_file:
         caption: Subtítulo
@@ -199,10 +200,6 @@ es:
       permissions: 'Compartiendo
 
         '
-    content_header:
-      sort:
-        name: Ordenar por nombre
-        time: Ordenar por tiempo
     demo_mode: Esta instancia es una demo. No puedes añadir ni eliminar modelos, pero puedes hacer todo lo demás.
     filters_card:
       missing_tags: Etiquetas vacías
@@ -249,6 +246,10 @@ es:
       search: Buscar
       settings: Ajustes
       upload: Cargar
+    order_buttons:
+      sort:
+        name: Ordenar por nombre
+        time: Ordenar por tiempo
     tag_list:
       unrelated_tag_count:
         one: "%{count} etiqueta no relacionada oculta"
@@ -258,8 +259,8 @@ es:
       skip_tags: Saltar lista de etiquetas
     title: Manyfold
   follow_button_component:
-    follow: Seguir a %{name}
-    unfollow: Dejar de seguir a %{name}
+    follow: Seguir %{name}
+    unfollow: Dejar de seguir %{name}
   follows:
     follow_remote_actor:
       followed: Siguiendo a %{actor} correctamente.
@@ -276,7 +277,7 @@ es:
       no_results_html: No se pudo encontrar tu cuenta de inicio; ¿la escribiste correctamente?
       placeholder: Tu nombre de usuario de Fediverse, por ejemplo manyfold@3dp.chat
       submit: Llévame a casa
-      title: Seguir a %{name}
+      title: Seguir %{name}
   general:
     delete: Borrar
     download: Descargar
@@ -328,7 +329,7 @@ es:
       current_page: Página actual
       label: Ir a la página %{page}
     paginator:
-      label:
+      label: Navegación por la página
     prev_page:
       label: Ir a la página anterior
   layouts:
@@ -337,6 +338,8 @@ es:
         danger: Peligro
         info: Información
       skip_to_content: Ir al contenido principal
+    card_list_page:
+      actions_heading: Acciones
   licenses:
     CC-BY-40: Creative Commons - Reconocimiento
     CC-BY-NC-40: Creative Commons - Reconocimiento - No Comercial

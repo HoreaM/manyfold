@@ -39,9 +39,8 @@ fr:
       previous: Précédent
       select_slide: Choisir l'image à afficher
       slide_label:
-    index:
-      actions_heading: Actions
-      bulk_edit: Edition en bloc
+    list:
+      bulk_edit:
       no_results_html:
       skip_models:
     merge:

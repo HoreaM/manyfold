@@ -36,6 +36,7 @@ fr:
         notes: Description
         path: Chemin
         preview_file: Prévisualisation
+        sensitive:
         tags: Étiquettes
       model_file:
         caption: Légende
@@ -195,10 +196,6 @@ fr:
     caber_relations_form:
       add:
       permissions:
-    content_header:
-      sort:
-        name: Trier par nom
-        time: Trier par heure
     demo_mode: Cette instance est en mode démo. Vous ne pouvez pas ajouter ou supprimer des modèles, mais vous pouvez faire tout le reste.
     filters_card:
       missing_tags: Etiquette manquante
@@ -245,6 +242,10 @@ fr:
       search: Recherche
       settings: Paramètres
       upload: Télécharger
+    order_buttons:
+      sort:
+        name: Trier par nom
+        time: Trier par heure
     tag_list:
       unrelated_tag_count:
         one:
@@ -333,6 +334,8 @@ fr:
         danger: Danger
         info: Information
       skip_to_content:
+    card_list_page:
+      actions_heading: Actions
   licenses:
     CC-BY-40: Creative Commons Attribution
     CC-BY-NC-40: Creative Commons Attribution NonCommercial

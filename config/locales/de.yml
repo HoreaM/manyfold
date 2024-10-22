@@ -36,6 +36,7 @@ de:
         notes: Beschreibung
         path: Pfad
         preview_file: Vorschau Datei
+        sensitive:
         tags: Tags
       model_file:
         caption: Beschreibung
@@ -195,10 +196,6 @@ de:
     caber_relations_form:
       add: Füge eine weitere Berechtigungen hinzu.
       permissions: Teilend
-    content_header:
-      sort:
-        name: Nach Namen sortieren
-        time: Sortieren nach Zeit
     demo_mode: Diese Instanz befindet sich im Demo-Modus. Du kannst keine Modelle hinzufügen oder entfernen, aber alles andere ist möglich.
     filters_card:
       missing_tags: Fehlende Tags
@@ -245,6 +242,10 @@ de:
       search: Suche
       settings: Einstellungen
       upload: Hochladen
+    order_buttons:
+      sort:
+        name: Nach Namen sortieren
+        time: Sortieren nach Zeit
     tag_list:
       unrelated_tag_count:
         one: "%{count} unabhängige Tags versteckt"
@@ -333,6 +334,8 @@ de:
         danger: Gefahr
         info: Info
       skip_to_content: Zum Hauptinhalt springen
+    card_list_page:
+      actions_heading: Aktionen
   licenses:
     CC-BY-40: Creative Commons Attribution
     CC-BY-NC-40: Creative Commons Attribution NonCommercial

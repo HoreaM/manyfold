@@ -36,6 +36,7 @@ pl:
         notes: Opis
         path: Ścieżka
         preview_file: Podgląd pliku
+        sensitive:
         tags: Tagi
       model_file:
         caption: Napis
@@ -195,10 +196,6 @@ pl:
     caber_relations_form:
       add: dodaj kolejne uprawnienie
       permissions: Udostępnianie
-    content_header:
-      sort:
-        name: Sortuj według nazwy
-        time: Sortuj według czasu
     demo_mode: Ta instancja jest w trybie demonstracyjnym. Nie możesz dodawać ani usuwać modeli, ale możesz robić wszystko inne.
     filters_card:
       missing_tags: Brakujące tagi
@@ -245,6 +242,10 @@ pl:
       search: Wyszukaj
       settings: Ustawienia
       upload: Prześlij
+    order_buttons:
+      sort:
+        name: Sortuj według nazwy
+        time: Sortuj według czasu
     tag_list:
       unrelated_tag_count:
         one: "%{count} niepowiązany tag ukryty"
@@ -333,6 +334,8 @@ pl:
         danger: Niebezpieczeństwo
         info: Informacja
       skip_to_content: Przejdź do głównej treści
+    card_list_page:
+      actions_heading: Akcje
   licenses:
     CC-BY-40: Creative Commons Uznanie autorstwa
     CC-BY-NC-40: Creative Commons Uznanie autorstwa-Użycie niekomercyjne
