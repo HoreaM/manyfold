@@ -100,10 +100,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
         :current_password,
         :interface_language,
         :sensitive_content_handling,
+        :sort_order,
         pagination_settings: [
-          :models,
-          :creators,
-          :collections,
           :per_page
         ],
         tag_cloud_settings: [
@@ -160,9 +158,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def pagination_json(settings)
     return nil unless settings
     {
-      "models" => settings[:models] == "1",
-      "creators" => settings[:creators] == "1",
-      "collections" => settings[:collections] == "1",
       "per_page" => settings[:per_page].to_i
     }
   end
