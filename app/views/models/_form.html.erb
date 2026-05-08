@@ -26,14 +26,18 @@
   <div>
     <%= form.label :collection_ids, Collection.model_name.human(count: 100) %>
   </div>
-  <%= form.collection_select :collection_ids, @collections,
-        :public_id, :name_with_domain, {
-          selected: @model.collections.map(&:public_id)
-        }, {
-          multiple: true,
-          class: "form-select",
-          data: {controller: "collection-input", action: "turbo:morph@window->collection-input#reconnect"}
-        } %>
+  <div class="input-group">
+    <%= form.collection_select :collection_ids, @collections,
+          :public_id, :name_with_domain, {
+            selected: @model.collections.map(&:public_id) + [@new_collection&.public_id].compact
+          }, {
+            multiple: true,
+            class: "form-select",
+            data: {controller: "collection-input", action: "turbo:morph@window->collection-input#reconnect"}
+          } %>
+    <%= link_to t("collections.general.new"), new_collection_path, class: "btn btn-secondary" %>
+  </div>
+
 
   <%= render "links_form", form: form %>
   <%= text_input_row form, :caption %>
