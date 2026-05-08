@@ -1,11 +1,12 @@
 class Components::InputRow < Components::Base
-  def initialize(form:, attribute:, label:, help: nil, options: {})
+  def initialize(form:, attribute:, label:, help: nil, group: false, options: {})
     @form = form
     @attribute = attribute
     @attribute_without_id = @attribute.to_s.gsub("_id", "")
     @label = label
     @help = help
     @options = options
+    @group = group
   end
 
   def view_template
@@ -24,7 +25,7 @@ class Components::InputRow < Components::Base
   end
 
   def input_group
-    div class: "input-group" do
+    div class: @group ? "input-group" : nil do
       input_element
     end
   end
