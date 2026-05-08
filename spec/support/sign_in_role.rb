@@ -1,17 +1,21 @@
 RSpec.configure do |config|
   config.before(:each, :as_administrator) do
-    sign_in create(:admin)
+    @current_user = create(:admin)
+    sign_in @current_user
   end
 
   config.before(:each, :as_moderator) do
-    sign_in create(:moderator)
+    @current_user = create(:moderator)
+    sign_in @current_user
   end
 
   config.before(:each, :as_contributor) do
-    sign_in create(:contributor)
+    @current_user = create(:contributor)
+    sign_in @current_user
   end
 
   config.before(:each, :as_member) do
-    sign_in create(:user)
+    @current_user = create(:user)
+    sign_in @current_user
   end
 end

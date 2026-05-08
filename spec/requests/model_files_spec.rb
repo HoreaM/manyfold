@@ -269,7 +269,7 @@ RSpec.describe "Model Files" do
           "model_file" => {
             "filename" => "changed.stl",
             "presupported" => "1",
-            # "printed" => "",
+            "printed" => "1",
             "notes" => "this is a note",
             "caption" => "simple caption",
             "y_up" => "1",
@@ -291,6 +291,11 @@ RSpec.describe "Model Files" do
       it "sets presupported flag" do
         expect { patch model_model_file_path(model, stl_file), params: params }
           .to change { stl_file.reload.presupported }.from(false).to(true)
+      end
+
+      it "sets printed state" do
+        expect { patch model_model_file_path(model, stl_file), params: params }
+          .to change { @current_user.printed?(stl_file) }.from(false).to(true) # rubocop:disable RSpec/InstanceVariable
       end
 
       it "sets notes" do
