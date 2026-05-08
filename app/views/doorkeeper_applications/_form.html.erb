@@ -2,7 +2,7 @@
   <%= text_input_row form, :name, autofocus: true %>
   <%= text_input_row form, :redirect_uri, help: t(".redirect_uri.help") %>
   <%= select_input_row form, :scopes,
-        ["public", "read", "write", "delete"],
+        ["public", "read", "write", "delete", "upload"],
         label: t(".scopes.label"),
         multiple: true %>
   <%= checkbox_input_row form, :confidential, help: t(".confidential.help") %>

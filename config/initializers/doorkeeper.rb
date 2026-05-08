@@ -19,7 +19,7 @@ Doorkeeper.configure do
 
   # Available scopes
   default_scopes :public
-  optional_scopes :read, :write, :delete
+  optional_scopes :read, :write, :delete, :upload
   enforce_configured_scopes
 
   # Per-user applications
