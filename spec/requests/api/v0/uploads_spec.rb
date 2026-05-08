@@ -7,7 +7,6 @@ describe "File Uploading", :after_first_run, :multiuser do # rubocop:disable RSp
     options "Details of upload capabilities" do
       tags "File Uploading"
       description "Manyfold uses the Tus protocol for resumable uploading; see https://tus.io/protocols/resumable-upload for full details."
-      produces Mime[:manyfold_api_v0].to_s
       security [client_credentials: ["upload"]]
 
       response "204", "Upload capabilities" do
@@ -41,7 +40,6 @@ describe "File Uploading", :after_first_run, :multiuser do # rubocop:disable RSp
     post "Create a new upload" do
       tags "File Uploading"
       description "Manyfold uses the Tus protocol for resumable uploading; see https://tus.io/protocols/resumable-upload for full details."
-      produces Mime[:manyfold_api_v0].to_s
 
       parameter in: :header, name: "Tus-Resumable", description: "Tus protocol version", example: "1.0.0", required: true
       parameter in: :header, name: "Upload-Length", description: "Total size of upload, in bytes", example: 0, required: true
@@ -103,7 +101,6 @@ describe "File Uploading", :after_first_run, :multiuser do # rubocop:disable RSp
     head "Get status of upload" do
       tags "File Uploading"
       description "Manyfold uses the Tus protocol for resumable uploading; see https://tus.io/protocols/resumable-upload for full details."
-      produces Mime[:manyfold_api_v0].to_s
 
       security [client_credentials: ["upload"]]
 
@@ -131,7 +128,6 @@ describe "File Uploading", :after_first_run, :multiuser do # rubocop:disable RSp
     patch "Upload bytes at specified offset" do
       tags "File Uploading"
       description "Manyfold uses the Tus protocol for resumable uploading; see https://tus.io/protocols/resumable-upload for full details."
-      produces Mime[:manyfold_api_v0].to_s
 
       parameter in: :header, name: "Upload-Offset", description: "File offset for bytes being sent. Must be the same as current Upload-Offset value reported by the HEAD request.", example: 384, required: true
       parameter in: :header, name: "Content-Length", description: "The number of bytes being sent in the POST body", example: 128, required: true

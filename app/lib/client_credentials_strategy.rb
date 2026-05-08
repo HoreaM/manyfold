@@ -1,6 +1,6 @@
 class ClientCredentialsStrategy < Devise::Strategies::Authenticatable
   def valid?
-    request.format.manyfold_api_v0? && request.headers.key?("Authorization")
+    request.format.manyfold_api_v0? || request.headers.key?("Authorization")
   end
 
   def authenticate!
