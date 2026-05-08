@@ -264,9 +264,48 @@ RSpec.describe "Model Files" do
     end
 
     describe "PATCH /models/:model_id/model_files/:id", :as_moderator do
-      it "updates the file" do
-        patch model_model_file_path(model, stl_file), params: {model_file: {name: "name"}}
+      let(:params) {
+        {
+          "model_file" => {
+            "filename" => "changed.stl",
+            "presupported" => "1",
+            # "printed" => "",
+            "notes" => "this is a note",
+            "caption" => "simple caption",
+            "y_up" => "1",
+            "previewable" => "1"
+          }
+        }
+      }
+
+      it "redirects back to model" do
+        patch model_model_file_path(model, stl_file), params: params
         expect(response).to redirect_to(model_model_file_path(model, stl_file))
+      end
+
+      it "sets filename" do
+        expect { patch model_model_file_path(model, stl_file), params: params }
+          .to change { stl_file.reload.filename }.from("test.stl").to("changed.stl")
+      end
+
+      it "sets presupported flag" do
+        expect { patch model_model_file_path(model, stl_file), params: params }
+          .to change { stl_file.reload.presupported }.from(false).to(true)
+      end
+
+      it "sets notes" do
+        expect { patch model_model_file_path(model, stl_file), params: params }
+          .to change { stl_file.reload.notes }.to("this is a note")
+      end
+
+      it "sets caption" do
+        expect { patch model_model_file_path(model, stl_file), params: params }
+          .to change { stl_file.reload.caption }.to("simple caption")
+      end
+
+      it "sets Y up" do
+        expect { patch model_model_file_path(model, stl_file), params: params }
+          .to change { stl_file.reload.y_up }.from(false).to(true)
       end
     end
 
