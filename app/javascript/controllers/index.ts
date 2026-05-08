@@ -8,6 +8,7 @@ import BulkEditController from './bulk_edit_controller'
 import CaberAdvancedController from './caber_advanced_controller'
 import CarouselController from './carousel_controller'
 import CocoonedController from './cocooned_controller'
+import CollectionInputController from './collection_input_controller'
 import CopyTextController from './copy_text_controller'
 import EditableController from './editable_controller'
 import I18nController from './i18n_controller'
@@ -25,6 +26,7 @@ application.register('bulk-edit', BulkEditController)
 application.register('caber-advanced', CaberAdvancedController)
 application.register('carousel', CarouselController)
 application.register('cocooned', CocoonedController)
+application.register('collection-input', CollectionInputController)
 application.register('copy-text', CopyTextController)
 application.register('editable', EditableController)
 application.register('i18n', I18nController)
