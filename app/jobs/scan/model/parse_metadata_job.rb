@@ -187,7 +187,8 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
 
   def combine_options(options, new_options)
     combined = options.reverse_merge(new_options)
-    combined[:collections] = (options[:collections] || []).concat(new_options[:collections]).uniq if new_options[:collections]
+    existing_collections = options[:collections] || []
+    combined[:collections] = existing_collections.concat(new_options[:collections] - existing_collections) if new_options[:collections]
     combined[:tag_list] = (options[:tag_list] || []).concat(new_options[:tag_list]).uniq if new_options[:tag_list]
     combined.compact_blank
   end

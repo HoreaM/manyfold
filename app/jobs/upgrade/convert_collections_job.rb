@@ -11,7 +11,7 @@ class Upgrade::ConvertCollectionsJob < Upgrade::IterationJob
   def each_iteration(record)
     collection = Collection.find(record.collection_id)
     # Add to the new association
-    record.collections << collection unless record.collections.include?(collection)
+    record.collections << collection unless collection.in?(record.collections)
     # Remove the old collection ID without validation, callbacks, or touching the date
     record.update_column :collection_id, nil # rubocop:disable Rails/SkipsModelValidations
   end
