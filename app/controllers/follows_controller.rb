@@ -11,7 +11,7 @@ class FollowsController < ApplicationController
 
   # Incoming remote follow
   def new
-    @query = params[:uri]
+    @query = params[:uri]&.strip
     # Get actor if this is a HTTP or acct URI
     if @query.present?
       begin
