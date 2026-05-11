@@ -34,6 +34,22 @@ RSpec.describe Form::ModelDeserializer do
     )
   }
 
+  context "when only providing a single field" do
+    let(:user) { create(:contributor) }
+    let(:record) { create(:model) }
+    let(:params) {
+      ActionController::Parameters.new(
+        "model" => ActionController::Parameters.new({
+          "name" => "Batarang"
+        })
+      )
+    }
+
+    it "only permits that field" do
+      expect(deserializer.deserialize.keys).to eq ["name"]
+    end
+  end
+
   context "when the user is the owner of the model" do
     let(:user) { create(:contributor) }
     let(:record) { create(:model, owner: user) }
