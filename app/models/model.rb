@@ -40,7 +40,7 @@ class Model < ApplicationRecord
   belongs_to :creator, optional: true
 
   has_many :collections_models, dependent: :destroy
-  has_many :collections, through: :collections_models, after_add: :post_collected_activity
+  has_many :collections, through: :collections_models, after_add: :after_collection_added, after_remove: :after_collection_removed
 
   belongs_to :preview_file, class_name: "ModelFile", optional: true
 
@@ -385,9 +385,14 @@ class Model < ApplicationRecord
     Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id) if public?
   end
 
-  def post_collected_activity(collection)
+  def after_collection_added(collection)
+    write_datapackage_later
     Activity::ModelCollectedJob.set(wait: 5.seconds).perform_later(id, collection.id) if collection.public?
     Activity::ModelUpdatedJob.set(wait: 5.seconds).perform_later(id) if public?
+  end
+
+  def after_collection_removed(collection)
+    write_datapackage_later
   end
 
   def post_update_activity
