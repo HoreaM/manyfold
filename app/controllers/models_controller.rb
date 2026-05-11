@@ -100,12 +100,12 @@ class ModelsController < ApplicationController
       # Handle actual files
       jobs = if multiple
         # If this is all separate archives, enqueue separate jobs for each
-        p[:file].values.map { |it| cached_file_data(it) }
+        p[:file]&.values&.map { |it| cached_file_data(it) }
       else
         # Otherwise, enqueue one job for all files and add name to args
-        [p[:file].values.map { |it| cached_file_data(it) }]
+        [p[:file]&.values&.map { |it| cached_file_data(it) }]
       end
-      jobs.each do |it|
+      jobs&.each do |it|
         ProcessUploadedFileJob.perform_later(library.id, it, **common_args)
       end
       respond_to do |format|
