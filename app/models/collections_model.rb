@@ -2,4 +2,6 @@
 class CollectionsModel < ApplicationRecord
   belongs_to :collection, counter_cache: :models_count
   belongs_to :model
+
+  validates :collection, uniqueness: {scope: :model}
 end

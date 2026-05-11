@@ -152,7 +152,7 @@ class Model < ApplicationRecord
       check_for_problems_later
       # Merge metadata
       self.creator ||= other.creator
-      other.collections.each { |c| collections << c unless collections.include?(c) }
+      other.collections.each { |c| collections << c unless c.in?(collections) }
       self.license ||= other.license
       self.caption ||= other.caption
       self.notes ||= other.notes

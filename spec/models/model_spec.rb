@@ -36,6 +36,27 @@ RSpec.describe Model do
     expect(build(:model).model_files).to be_empty
   end
 
+  context "when adding to collections" do
+    let(:model) { create(:model) }
+    let(:collection) { create(:collection) }
+
+    it "can be in a collection" do
+      model.collections << collection
+      expect(collection.reload.models).to include(model)
+    end
+
+    it "adds a collection relation" do
+      expect { model.collections << collection }.to change(CollectionsModel, :count).from(0).to(1)
+    end
+
+    it "can only be in each collection once" do
+      model.collections << collection
+      expect do
+        model.collections << collection
+      end.to raise_error(ActiveRecord::RecordInvalid)
+    end
+  end
+
   context "with license information" do
     it "allows nil license" do
       m = build(:model, license: nil)
