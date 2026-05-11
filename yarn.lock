@@ -5880,12 +5880,12 @@ __metadata:
   linkType: hard
 
 "socks@npm:^2.8.3":
-  version: 2.8.8
-  resolution: "socks@npm:2.8.8"
+  version: 2.8.9
+  resolution: "socks@npm:2.8.9"
   dependencies:
     ip-address: ^10.1.1
     smart-buffer: ^4.2.0
-  checksum: 5a79651f9bf512326281b7e10c1649da2c370e062881679b07d7a680f8b1c7c734b50c986551d9c6d876de0c321eced6fae3c1d155f03162ea5e8340bd3b8487
+  checksum: b573ed4cfb935624d3688e7065cd03fd72ca258156923c9ebb9d462e545cd78f296b64a0e36f911b16326c94aabe2bf94ff405f8afef27ac7bf80fa3c971c6f6
   languageName: node
   linkType: hard
 
