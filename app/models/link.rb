@@ -7,6 +7,8 @@ class Link < ApplicationRecord
 
   validates :url, presence: true, uniqueness: {scope: :linkable} # rubocop:disable Rails/UniqueValidationWithoutIndex
 
+  after_commit -> { linkable.try(:write_datapackage_later) }
+
   def host
     URI.parse(url).host || url
   rescue URI::InvalidURIError, URI::InvalidComponentError

@@ -686,8 +686,9 @@ RSpec.describe Model do
     end
 
     it "writes datapackage when link is removed" do
-      model.links << Link.create(url: "https://manyfold.app")
-      expect { model.links.where(url: "https://manyfold.app").destroy_all }.to have_enqueued_job(UpdateDatapackageJob).with(model.id)
+      link = Link.create(url: "https://manyfold.app")
+      model.links << link
+      expect { model.links.delete(link) }.to have_enqueued_job(UpdateDatapackageJob).with(model.id)
     end
 
     it "writes datapackage when collection is added" do
@@ -697,7 +698,7 @@ RSpec.describe Model do
     it "writes datapackage when collection is removed" do
       collection = create(:collection)
       model = create(:model, collections: [collection])
-      expect { model.collections_models.where(collection: collection).destroy_all }.to have_enqueued_job(UpdateDatapackageJob).with(model.id)
+      expect { model.collections.delete(collection) }.to have_enqueued_job(UpdateDatapackageJob).with(model.id)
     end
 
     it "doesn't update datapackage if model didn't actually change" do
