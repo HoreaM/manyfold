@@ -671,9 +671,33 @@ RSpec.describe Model do
   end
 
   context "when making changes" do
+    let(:model) { create(:model) }
+
     it "writes datapackage if model has changed" do
-      model = create(:model)
       expect { model.update(name: "Changed") }.to have_enqueued_job(UpdateDatapackageJob).with(model.id)
+    end
+
+    it "writes datapackage when link is added via nested attributes" do
+      expect { model.update(links_attributes: [{url: "https://manyfold.app"}]) }.to have_enqueued_job(UpdateDatapackageJob).with(model.id)
+    end
+
+    it "writes datapackage when link is added via concat" do
+      expect { model.links << Link.create(url: "https://manyfold.app") }.to have_enqueued_job(UpdateDatapackageJob).with(model.id)
+    end
+
+    it "writes datapackage when link is removed" do
+      model.links << Link.create(url: "https://manyfold.app")
+      expect { model.links.where(url: "https://manyfold.app").destroy_all }.to have_enqueued_job(UpdateDatapackageJob).with(model.id)
+    end
+
+    it "writes datapackage when collection is added" do
+      expect { model.collections << create(:collection) }.to have_enqueued_job(UpdateDatapackageJob).with(model.id)
+    end
+
+    it "writes datapackage when collection is removed" do
+      collection = create(:collection)
+      model = create(:model, collections: [collection])
+      expect { model.collections_models.where(collection: collection).destroy_all }.to have_enqueued_job(UpdateDatapackageJob).with(model.id)
     end
 
     it "doesn't update datapackage if model didn't actually change" do
