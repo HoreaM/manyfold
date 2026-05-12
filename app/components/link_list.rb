@@ -18,7 +18,11 @@ class Components::LinkList < Components::Base
           li do
             Icon(icon: "link-45deg", role: "presentation") if @icons
             whitespace
-            link_to t("sites.%{site}" % {site: link.site}, default: "%{site}" % {site: link.site}), link.url, rel: "noreferrer"
+            link_to(
+              link.text || t("sites.%{site}" % {site: link.site}, default: "%{site}" % {site: link.site}),
+              link.url,
+              rel: "noreferrer"
+            )
             if link.deserializer.present? && policy(link.linkable).sync?
               whitespace
               link_to({action: "sync", id: link.linkable, link: link.id}, {method: :post}) do
