@@ -169,17 +169,29 @@ RSpec.describe "Models" do
           expect(private_creator.reload).to be_public
         end
 
-        it "adds links", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+        it "adds links", :as_moderator do # rubocop:todo RSpec/ExampleLength
           model = library.models.first
           put "/models/#{model.to_param}", params: {
             model: {
               links_attributes: {"0" => {url: "https://manyfold.app", text: "Manyfold"}}
             }
           }
-          expect(response).to have_http_status(:redirect)
+          expect(model.reload.links.find_by(url: "https://manyfold.app", text: "Manyfold")).to be_present
         end
 
-        it "removes links", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+        it "edits url on existing links", :as_moderator do # rubocop:todo RSpec/ExampleLength
+          model = library.models.first
+          link = create(:link, url: "https://manyfold.app", text: "Manyfold", linkable: model)
+          expect {
+            put "/models/#{model.to_param}", params: {
+              model: {
+                links_attributes: {"0" => {id: link.id.to_s, url: "https://github.com/manyfold3d/manyfold"}}
+              }
+            }
+          }.to change { link.reload.url }.from("https://manyfold.app").to("https://github.com/manyfold3d/manyfold")
+        end
+
+        it "removes links", :as_moderator do # rubocop:todo RSpec/ExampleLength
           model = library.models.first
           link = create(:link, url: "https://manyfold.app", text: "Manyfold", linkable: model)
           expect {
