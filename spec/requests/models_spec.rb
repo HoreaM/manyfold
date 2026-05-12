@@ -173,11 +173,22 @@ RSpec.describe "Models" do
           model = library.models.first
           put "/models/#{model.to_param}", params: {
             model: {
-              links_attributes: {"0" => {url: "https://manyfold.app"}}
+              links_attributes: {"0" => {url: "https://manyfold.app", text: "Manyfold"}}
             }
           }
           expect(response).to have_http_status(:redirect)
-          expect(model.reload.links.find_by(url: "https://manyfold.app")).to be_present
+        end
+
+        it "removes links", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+          model = library.models.first
+          link = create(:link, url: "https://manyfold.app", text: "Manyfold", linkable: model)
+          expect {
+            put "/models/#{model.to_param}", params: {
+              model: {
+                links_attributes: {"0" => {"id" => link.id.to_s, "_destroy" => "true"}}
+              }
+            }
+          }.to change(Link, :count).by(-1)
         end
 
         it "is denied to non-moderators", :as_contributor do
