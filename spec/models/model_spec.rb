@@ -574,6 +574,22 @@ RSpec.describe Model do
       expect(model.preview_file).to eq preview_file
     end
 
+    it "sets entrypoint in new model if file is part of split" do # rubocop:todo RSpec/MultipleExpectations
+      entrypoint = model.model_files.first
+      model.update!(entrypoint: entrypoint)
+      new_model = model.split! files: [entrypoint]
+      expect(model.reload.entrypoint).to be_nil
+      expect(new_model.reload.entrypoint).to eq entrypoint
+    end
+
+    it "leaves entrypoint in old model if file is not part of split" do # rubocop:todo RSpec/MultipleExpectations
+      entrypoint = model.model_files.first
+      model.update!(entrypoint: entrypoint)
+      new_model = model.split! files: [model.model_files.last]
+      expect(model.reload.entrypoint).to eq entrypoint
+      expect(new_model.reload.entrypoint).to be_nil
+    end
+
     it "copies permissions" do # rubocop:disable RSpec/ExampleLength, RSpec/MultipleExpectations
       member_role = Role.find_by(name: :member)
       model.revoke_permission("view", member_role)
