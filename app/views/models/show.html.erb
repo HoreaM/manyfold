@@ -5,7 +5,7 @@
   <%= tag.meta name: "fediverse:creator", content: @model.creator.federails_actor.at_address if @model.creator %>
   <%= tag.link rel: "alternate", type: Mime[:oembed], href: model_url(@model, format: :oembed), title: @model.name %>
   <%- if @model.entrypoint %>
-    <%= tag.link rel: "alternate", as: "spatial-entrypoint", type: @model.entrypoint.mime_type, href: model_model_file_raw_url(@model, @model.entrypoint.filename) %>
+    <%= tag.link rel: "alternate", as: "spatial-entrypoint", type: @model.entrypoint.mime_type, href: model_model_file_raw_url(@model, @model.entrypoint.filename, anchor: @model.entrypoint_fragment) %>
   <%- end %>
 <% end %>
 
