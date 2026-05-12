@@ -187,7 +187,7 @@ gem "activejob-uniqueness", "~> 0.4", require: "active_job/uniqueness/sidekiq_pa
 
 gem "job-iteration", "~> 1.13"
 gem "rswag", "~> 2.17"
-gem "warning", "~> 1.5"
+gem "warning", "~> 1.6"
 
 gem "rack-cors", "~> 3.0"
 
