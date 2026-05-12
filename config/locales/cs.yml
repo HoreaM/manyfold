@@ -104,6 +104,8 @@ cs:
         ai_indexable:
         caption: Titulek
         creator_id: Autor
+        entrypoint:
+        entrypoint_fragment:
         indexable:
         library_id: Knihovna
         license: Licence

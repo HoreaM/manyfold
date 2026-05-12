@@ -104,6 +104,8 @@ pl:
         ai_indexable:
         caption: Napis
         creator_id: Twórca
+        entrypoint:
+        entrypoint_fragment:
         indexable:
         library_id: Biblioteka
         license: Licencja

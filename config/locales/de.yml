@@ -104,6 +104,8 @@ de:
         ai_indexable: Verwendung für KI-Training zulassen
         caption: Bildunterschrift
         creator_id: Autor
+        entrypoint:
+        entrypoint_fragment:
         indexable: Suchindizierung zulassen
         library_id: Sammlung
         license: Lizenz

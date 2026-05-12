@@ -104,6 +104,8 @@ en:
         ai_indexable: Allow use for AI training
         caption: Caption
         creator_id: Creator
+        entrypoint: Entrypoint
+        entrypoint_fragment: Entrypoint Fragment
         indexable: Allow search indexing
         library_id: Library
         license: License

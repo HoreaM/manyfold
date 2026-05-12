@@ -104,6 +104,8 @@ zh-CN:
         ai_indexable: 允许用于 AI 训练
         caption: 标题
         creator_id: 创作者
+        entrypoint:
+        entrypoint_fragment:
         indexable: 允许搜索索引
         library_id: 资料库
         license: 许可证

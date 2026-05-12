@@ -39,6 +39,10 @@ de:
       presupported: Version mit Supportstruktur
       set_as_preview: Als Vorschau setzen
     form:
+      entrypoint:
+        help_html:
+      entrypoint_fragment:
+        help:
       notes:
         help_html: 'Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden. '
       preview_file:

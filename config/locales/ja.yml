@@ -104,6 +104,8 @@ ja:
         ai_indexable:
         caption: キャプション
         creator_id: クリエイター
+        entrypoint:
+        entrypoint_fragment:
         indexable:
         library_id: ライブラリー
         license: ライセンス

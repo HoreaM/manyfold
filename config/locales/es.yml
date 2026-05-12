@@ -104,6 +104,8 @@ es:
         ai_indexable: Permitir el uso para el entrenamiento de IA
         caption: Subtítulo
         creator_id: Creador
+        entrypoint:
+        entrypoint_fragment:
         indexable: Permitir la indexación de búsquedas
         library_id: Biblioteca
         license: Licencia

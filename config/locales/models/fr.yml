@@ -39,6 +39,10 @@ fr:
       presupported:
       set_as_preview: Définir comme aperçu
     form:
+      entrypoint:
+        help_html:
+      entrypoint_fragment:
+        help:
       notes:
         help_html: Vous pouvez utiliser du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:

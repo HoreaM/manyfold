@@ -39,6 +39,10 @@ ru:
       presupported:
       set_as_preview:
     form:
+      entrypoint:
+        help_html:
+      entrypoint_fragment:
+        help:
       notes:
         help_html:
       preview_file:
