@@ -48,7 +48,11 @@ RSpec.describe DataPackage::ModelDeserializer do
             "path" => "http://localhost:3214/models/test-model"
           }
         ],
-        "sensitive" => true
+        "sensitive" => true,
+        "entrypoint" => {
+          "path" => "files/test.stl",
+          "fragment" => "main"
+        }
       }
     end
 
@@ -74,6 +78,14 @@ RSpec.describe DataPackage::ModelDeserializer do
 
     it "parses preview image" do
       expect(output[:preview_file]).to eq "images/pic.png"
+    end
+
+    it "parses entrypoint" do
+      expect(output[:entrypoint]).to eq "files/test.stl"
+    end
+
+    it "parses entrypoint fragment" do
+      expect(output[:entrypoint_fragment]).to eq "main"
     end
 
     it "parses tags" do
