@@ -13,7 +13,7 @@ module Form
         :preview_model_id, # i18n-tasks-use t("activerecord.attributes.collection.preview_model_id")
         :cover, # i18n-tasks-use t("activerecord.attributes.collection.cover")
         :remove_cover,
-        links_attributes: [:id, :url, :_destroy]
+        links_attributes: [:id, :url, :text, :_destroy]
       )
       return allowed unless user_can_set_permissions?
       allowed.deep_merge(caber_relations_attributes(type: :collection))

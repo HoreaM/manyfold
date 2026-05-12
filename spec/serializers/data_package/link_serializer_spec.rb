@@ -10,5 +10,9 @@ RSpec.describe DataPackage::LinkSerializer do
     it "includes path" do
       expect(output[:path]).to eq object.url
     end
+
+    it "includes text" do
+      expect(output[:text]).to eq object.text
+    end
   end
 end

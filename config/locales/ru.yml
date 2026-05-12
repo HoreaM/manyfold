@@ -424,6 +424,8 @@ ru:
       support:
       version:
     link_fields:
+      text:
+        placeholder:
       url:
         delete:
         placeholder:

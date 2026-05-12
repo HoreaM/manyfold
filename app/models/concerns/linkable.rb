@@ -8,7 +8,8 @@ module Linkable
     scope :linked_to, ->(url) { includes(:links).where("links.url": url) }
 
     def link_not_valid?(attributes)
-      attributes[:url].blank? || links.map(&:url).include?(attributes[:url]) || [PublicUrl.hostname, "localhost"].include?(URI.parse(attributes[:url]).hostname)
+      return false unless attributes.has_key?(:url)
+      attributes[:url].blank? || links.where.not(id: attributes[:id]).map(&:url).include?(attributes[:url]) || [PublicUrl.hostname, "localhost"].include?(URI.parse(attributes[:url]).hostname)
     end
   end
 end

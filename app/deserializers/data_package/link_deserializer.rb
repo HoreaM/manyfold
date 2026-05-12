@@ -3,7 +3,8 @@ module DataPackage
     def deserialize
       return unless @object
       {
-        url: @object["path"]
+        url: @object["path"],
+        text: @object["text"]
       }.compact
     end
   end

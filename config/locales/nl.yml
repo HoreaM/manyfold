@@ -424,6 +424,8 @@ nl:
       support:
       version: Versie
     link_fields:
+      text:
+        placeholder:
       url:
         delete: Verwijderen
         placeholder: Elke gerelateerde webpagina

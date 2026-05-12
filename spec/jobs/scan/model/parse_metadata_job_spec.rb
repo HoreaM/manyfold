@@ -355,7 +355,8 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       allow(model).to receive(:datapackage_content).and_return({
         "links" => [
           {
-            "path" => "https://thingiverse.com/thing:1234"
+            "path" => "https://thingiverse.com/thing:1234",
+            "text" => "anchor text"
           }
         ],
         "contributors" => [
@@ -379,6 +380,16 @@ RSpec.describe Scan::Model::ParseMetadataJob do
 
     it "adds links" do
       expect { described_class.perform_now(model.id) }.to change { model.links.count }.from(0).to(1)
+    end
+
+    it "parses link url correctly" do
+      described_class.perform_now(model.id)
+      expect(model.links.first.url).to eq "https://thingiverse.com/thing:1234"
+    end
+
+    it "parses link text correctly" do
+      described_class.perform_now(model.id)
+      expect(model.links.first.text).to eq "anchor text"
     end
 
     it "does not duplicate links" do

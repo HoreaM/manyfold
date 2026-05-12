@@ -424,6 +424,8 @@ cs:
       support: Podporovat tuto instanci
       version: Verze
     link_fields:
+      text:
+        placeholder:
       url:
         delete: Smazat
         placeholder: Jakákoli související webová stránka

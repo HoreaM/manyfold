@@ -17,7 +17,8 @@ RSpec.describe DataPackage::CreatorDeserializer do
           "description" => "description goes here",
           "links" => [
             {
-              "path" => "http://example.com"
+              "path" => "http://example.com",
+              "text" => "anchor text"
             }
           ]
         }
@@ -36,7 +37,7 @@ RSpec.describe DataPackage::CreatorDeserializer do
       end
 
       it "parses links" do
-        expect(output[:links_attributes]).to include({url: "http://example.com"})
+        expect(output[:links_attributes]).to include({url: "http://example.com", text: "anchor text"})
       end
 
       it "parses notes" do

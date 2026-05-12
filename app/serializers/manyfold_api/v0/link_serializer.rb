@@ -2,7 +2,8 @@ module ManyfoldApi::V0
   class LinkSerializer < ApplicationSerializer
     def serialize
       {
-        url: @object.url
+        url: @object.url,
+        text: @object.text
       }.compact
     end
 

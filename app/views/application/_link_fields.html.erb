@@ -1,4 +1,5 @@
 <%= cocooned_item class: "input-group mb-2" do %>
   <%= f.url_field :url, class: "form-control", placeholder: translate(".url.placeholder") %>
+  <%= f.text_field :text, class: "form-control", placeholder: translate(".text.placeholder") %>
   <%= cocooned_remove_item_button Icon(icon: "trash", label: translate(".url.delete")), f, class: "btn btn-outline-danger" %>
 <% end %>
