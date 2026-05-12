@@ -8,7 +8,7 @@ shared_examples "GenericActivityPubSerializer" do
   end
 
   it "includes links as attachments" do
-    expect(ap[:attachment]).to include({type: "Link", href: "http://example.com"})
+    expect(ap[:attachment]).to include({type: "Link", href: "http://example.com", name: "anchor text"})
   end
 
   it "includes inherited indexable flag" do

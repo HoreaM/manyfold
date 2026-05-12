@@ -13,6 +13,10 @@ RSpec.describe ActivityPub::CollectionSerializer do
       expect(ap[:"f3di:concreteType"]).to eq "Collection"
     end
 
+    it "includes links as attachments" do
+      expect(ap[:attachment]).to include({type: "Link", href: "http://example.com", name: "anchor text"})
+    end
+
     it "includes preview images" do # rubocop:disable RSpec/ExampleLength
       model = create(:model, :public, collections: [object])
       file = create(:model_file, filename: "image.png", model: model)

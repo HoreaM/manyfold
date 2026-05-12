@@ -13,6 +13,10 @@ RSpec.describe ActivityPub::ModelSerializer do
       expect(ap[:"f3di:concreteType"]).to eq "3DModel"
     end
 
+    it "includes links as attachments" do
+      expect(ap[:attachment]).to include({type: "Link", href: "http://example.com", name: "anchor text"})
+    end
+
     it "includes right number of tags" do
       expect(ap[:tag].count).to eq 2
     end

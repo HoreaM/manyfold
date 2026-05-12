@@ -13,6 +13,10 @@ RSpec.describe ActivityPub::CreatorSerializer do
       expect(ap[:"f3di:concreteType"]).to eq "Creator"
     end
 
+    it "includes links as attachments" do
+      expect(ap[:attachment]).to include({type: "Link", href: "http://example.com", name: "anchor text"})
+    end
+
     it "includes attributionDomain" do
       expect(ap[:attributionDomains]).to contain_exactly("localhost:3214")
     end
