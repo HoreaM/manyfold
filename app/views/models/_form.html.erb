@@ -45,6 +45,10 @@
   <%= checkbox_input_row form, :sensitive %>
   <%= select_input_row form, :indexable, indexable_select_options(form.object) %>
   <%= select_input_row form, :ai_indexable, ai_indexable_select_options(form.object) if SiteSettings.allow_ai_bots %>
+
+  <%= collection_select_input_row form, :entrypoint, Naturally.sort_by(@model.three_d_files, :name_and_filename), :id, :name_and_filename, help: t(".entrypoint.help_html"), include_blank: true %>
+  <%= text_input_row form, :entrypoint_fragment, help: t(".entrypoint_fragment.help") %>
+
   <%= render "caber_relations_form", form: form %>
 
   <div>

@@ -104,6 +104,8 @@ pt:
         ai_indexable:
         caption:
         creator_id:
+        entrypoint:
+        entrypoint_fragment:
         indexable:
         library_id:
         license:

@@ -104,6 +104,8 @@ ru:
         ai_indexable: Разрешить использование данных для обучения ИИ
         caption: Описание
         creator_id: Автор
+        entrypoint:
+        entrypoint_fragment:
         indexable: Разрешить индексацию поисковыми системами
         library_id: Библиотека
         license: Лицензия

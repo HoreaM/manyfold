@@ -104,6 +104,8 @@ nl:
         ai_indexable: Gebruik voor AI-training toestaan
         caption: Onderschrift
         creator_id: Maker
+        entrypoint:
+        entrypoint_fragment:
         indexable: Indexering voor zoekopdrachten toestaan
         library_id: Bibliotheek
         license: Licentie

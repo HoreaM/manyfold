@@ -106,6 +106,8 @@ fr:
         ai_indexable: Permettre l'utilisation pour l'entrainement d'IA
         caption: Légende
         creator_id: Créateur
+        entrypoint:
+        entrypoint_fragment:
         indexable:
         library_id: Bibliothèque
         license: Licence

@@ -13,6 +13,8 @@ module Form
         :sensitive, # i18n-tasks-use t("activerecord.attributes.model.sensitive")
         :indexable, # i18n-tasks-use t("activerecord.attributes.model.indexable")
         :ai_indexable, # i18n-tasks-use t("activerecord.attributes.model.ai_indexable")
+        :entrypoint_id, # i18n-tasks-use t("activerecord.attributes.model.entrypoint")
+        :entrypoint_fragment, # i18n-tasks-use t("activerecord.attributes.model.entrypoint_fragment")
         :q,
         :library,
         :creator,

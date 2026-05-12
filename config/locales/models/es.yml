@@ -39,6 +39,10 @@ es:
       presupported: Versión con soporte predefinido
       set_as_preview: Establecer como vista previa
     form:
+      entrypoint:
+        help_html:
+      entrypoint_fragment:
+        help:
       notes:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:

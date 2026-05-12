@@ -43,6 +43,7 @@ class Model < ApplicationRecord
   has_many :collections, through: :collections_models, after_add: :after_collection_added, after_remove: :after_collection_removed
 
   belongs_to :preview_file, class_name: "ModelFile", optional: true
+  belongs_to :entrypoint, class_name: "ModelFile", optional: true
 
   # old collection_id database field is deprecated but kept around for compatibility
   belongs_to :deprecated_collection, class_name: "Collection", foreign_key: "collection_id", optional: true # rubocop:disable Rails/InverseOf
@@ -230,7 +231,7 @@ class Model < ApplicationRecord
     save!
   end
 
-  def self.create_from(other, link_preview_file: false, name: nil, path: nil)
+  def self.create_from(other, link_preview_file: false, link_entrypoint: false, name: nil, path: nil)
     new_model = other.dup
     new_model.update(
       path: path,
@@ -238,6 +239,7 @@ class Model < ApplicationRecord
       public_id: nil,
       tags: other.tags,
       preview_file: link_preview_file ? other.preview_file : nil,
+      entrypoint: link_entrypoint ? other.entrypoint : nil,
       collections: other.collections
     )
     path ? new_model.save! : new_model.organize!
@@ -251,9 +253,12 @@ class Model < ApplicationRecord
 
   def split!(files: [])
     preview_file_will_move = files.include?(preview_file)
-    new_model = Model.create_from(self, link_preview_file: preview_file_will_move)
+    entrypoint_will_move = files.include?(entrypoint)
+    new_model = Model.create_from(self, link_preview_file: preview_file_will_move, link_entrypoint: entrypoint_will_move)
     # Clear preview file if it was moved
     update!(preview_file: nil) if preview_file_will_move
+    # Clear entrypoint file if it was moved
+    update!(entrypoint: nil) if entrypoint_will_move
     # Move files
     files.each { |it| new_model.adopt_file(it) }
     # Done!

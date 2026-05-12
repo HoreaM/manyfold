@@ -10,6 +10,8 @@ RSpec.describe Form::ModelDeserializer do
       "model" => ActionController::Parameters.new({
         "name" => "Batarang",
         "preview_file_id" => "12345",
+        "entrypoint_id" => "54321",
+        "entrypoint_fragment" => "fragment",
         "creator_id" => "93",
         "library_id" => "20",
         "tag_list" => ["wonderful", "toys"],
