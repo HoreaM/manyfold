@@ -43,6 +43,7 @@ class Model < ApplicationRecord
   has_many :collections, through: :collections_models, after_add: :after_collection_added, after_remove: :after_collection_removed
 
   belongs_to :preview_file, class_name: "ModelFile", optional: true
+  belongs_to :entrypoint, class_name: "ModelFile", optional: true
 
   # old collection_id database field is deprecated but kept around for compatibility
   belongs_to :deprecated_collection, class_name: "Collection", foreign_key: "collection_id", optional: true # rubocop:disable Rails/InverseOf
