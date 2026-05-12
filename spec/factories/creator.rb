@@ -4,7 +4,7 @@ FactoryBot.define do
     sequence(:public_id) { |n| "creator_#{n}" }
     caption { Faker::Lorem.sentence }
     notes { Faker::Lorem.paragraph }
-    links_attributes { [{url: "http://example.com"}] }
+    links_attributes { [{url: "http://example.com", text: "anchor text"}] }
 
     trait :public do
       permission_preset { :public }

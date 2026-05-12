@@ -8,7 +8,7 @@ FactoryBot.define do
     license { "MIT" }
     caption { Faker::Lorem.sentence }
     notes { Faker::Lorem.paragraph }
-    links_attributes { [{url: "http://example.com"}] }
+    links_attributes { [{url: "http://example.com", text: "anchor text"}] }
 
     tag_list { "!new" }
 
