@@ -41,7 +41,8 @@ RSpec.describe DataPackage::ModelDeserializer do
         ],
         "links" => [
           {
-            "path" => "https://example.com/other-link"
+            "path" => "https://example.com/other-link",
+            "text" => "anchor text"
           },
           {
             "path" => "http://localhost:3214/models/test-model"
@@ -68,7 +69,7 @@ RSpec.describe DataPackage::ModelDeserializer do
     end
 
     it "parses other links" do
-      expect(output[:links_attributes]).to include({url: "https://example.com/other-link"})
+      expect(output[:links_attributes]).to include({url: "https://example.com/other-link", text: "anchor text"})
     end
 
     it "parses preview image" do

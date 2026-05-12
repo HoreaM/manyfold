@@ -16,7 +16,8 @@ RSpec.describe DataPackage::CollectionDeserializer do
           "description" => "description goes here",
           "links" => [
             {
-              "path" => "http://example.com"
+              "path" => "http://example.com",
+              "text" => "anchor text"
             }
           ]
         }
@@ -35,7 +36,7 @@ RSpec.describe DataPackage::CollectionDeserializer do
       end
 
       it "parses links" do
-        expect(output[:links_attributes]).to include({url: "http://example.com"})
+        expect(output[:links_attributes]).to include({url: "http://example.com", text: "anchor text"})
       end
 
       it "parses notes" do
