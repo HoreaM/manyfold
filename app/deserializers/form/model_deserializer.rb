@@ -4,7 +4,6 @@ module Form
       return nil unless @params
       allowed = @params.require(:model).permit(
         :preview_file_id, # i18n-tasks-use t("activerecord.attributes.model.preview_file")
-        :entrypoint_id, # i18n-tasks-use t("activerecord.attributes.model.entrypoint")
         :creator_id, # i18n-tasks-use t("activerecord.attributes.model.creator_id")
         :library_id, # i18n-tasks-use t("activerecord.attributes.model.library_id")
         :name, # i18n-tasks-use t("activerecord.attributes.model.name")
@@ -14,6 +13,8 @@ module Form
         :sensitive, # i18n-tasks-use t("activerecord.attributes.model.sensitive")
         :indexable, # i18n-tasks-use t("activerecord.attributes.model.indexable")
         :ai_indexable, # i18n-tasks-use t("activerecord.attributes.model.ai_indexable")
+        :entrypoint_id, # i18n-tasks-use t("activerecord.attributes.model.entrypoint")
+        :entrypoint_fragment, # i18n-tasks-use t("activerecord.attributes.model.entrypoint_fragment")
         :q,
         :library,
         :creator,

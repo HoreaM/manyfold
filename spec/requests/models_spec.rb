@@ -185,6 +185,13 @@ RSpec.describe "Models" do
           }.to change { model.reload.entrypoint }.from(nil).to(file)
         end
 
+        it "sets entrypoint fragment", :as_moderator do
+          model = library.models.first
+          expect {
+            put "/models/#{model.to_param}", params: {model: {entrypoint_fragment: "main"}}
+          }.to change { model.reload.entrypoint_fragment }.from(nil).to("main")
+        end
+
         it "adds links", :as_moderator do # rubocop:todo RSpec/ExampleLength
           model = library.models.first
           put "/models/#{model.to_param}", params: {
