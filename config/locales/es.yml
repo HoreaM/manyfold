@@ -424,6 +424,8 @@ es:
       support: Apoyar esta instancia
       version: Versión
     link_fields:
+      text:
+        placeholder:
       url:
         delete: Borrar
         placeholder: Cualquier web relacionada

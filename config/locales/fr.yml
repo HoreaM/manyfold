@@ -426,6 +426,8 @@ fr:
       support:
       version: Version
     link_fields:
+      text:
+        placeholder:
       url:
         delete: Supprimer
         placeholder: Toute page web connexe

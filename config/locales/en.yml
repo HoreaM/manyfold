@@ -424,6 +424,8 @@ en:
       support: Support this instance
       version: Version
     link_fields:
+      text:
+        placeholder: Optional link text
       url:
         delete: Delete
         placeholder: Any related web page

@@ -424,6 +424,8 @@ zh-CN:
       support: 支持此实例
       version: 版本
     link_fields:
+      text:
+        placeholder:
       url:
         delete: 删除
         placeholder: 任何相关的网页链接

@@ -21,7 +21,7 @@ module Form
         :missingtag,
         collection_ids: [],
         tag_list: [],
-        links_attributes: [:id, :url, :_destroy] # i18n-tasks-use t("activerecord.attributes.link.url")
+        links_attributes: [:id, :url, :text, :_destroy] # i18n-tasks-use t("activerecord.attributes.link.url")
       )
       allowed[:collections] = CollectionPolicy::Scope.new(@user, Collection).resolve.where(public_id: allowed.delete(:collection_ids)) if allowed[:collection_ids]
       return allowed unless user_can_set_permissions?

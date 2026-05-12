@@ -424,6 +424,8 @@ pl:
       support: Wesprzyj tą instancje
       version: Wersja
     link_fields:
+      text:
+        placeholder:
       url:
         delete: Usuń
         placeholder: Dowolna powiązana strona internetowa

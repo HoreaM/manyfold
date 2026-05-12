@@ -424,6 +424,8 @@ de:
       support: Diese Instanz unterstützen
       version: Version
     link_fields:
+      text:
+        placeholder:
       url:
         delete: Löschen
         placeholder: Verwandte Webseiten

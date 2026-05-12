@@ -424,6 +424,8 @@ ja:
       support: インスタンスをスポンサー
       version: バージョン
     link_fields:
+      text:
+        placeholder:
       url:
         delete: 削除
         placeholder: 関連ウェブページ
