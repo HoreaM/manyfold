@@ -170,6 +170,10 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
         end
 
         run_test! do
+          expect(response.parsed_body.dig("links", 0, "text")).to eq "anchor text"
+        end
+
+        run_test! do
           expect(response.parsed_body.dig("creator", "@id")).to include collection.creator.to_param
         end
 

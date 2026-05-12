@@ -3,7 +3,8 @@ module ManyfoldApi::V0
     def deserialize
       return unless @object
       {
-        url: @object["url"]
+        url: @object["url"],
+        text: @object["text"]
       }.compact
     end
 
@@ -11,7 +12,8 @@ module ManyfoldApi::V0
       {
         type: :object,
         properties: {
-          url: {type: :string, example: "https://example.com"}
+          url: {type: :string, example: "https://example.com"},
+          text: {type: :string, example: "anchor text"}
         },
         required: ["url"]
       }

@@ -154,6 +154,14 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
           graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
           expect(graph).to be_valid
         end
+
+        run_test! do
+          expect(response.parsed_body.dig("links", 0, "url")).to eq "http://example.com"
+        end
+
+        run_test! do
+          expect(response.parsed_body.dig("links", 0, "text")).to eq "anchor text"
+        end
       end
 
       response "401", "Unauthorized; the request did not provide valid authentication details" do
