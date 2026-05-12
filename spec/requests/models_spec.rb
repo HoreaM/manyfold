@@ -67,7 +67,7 @@ RSpec.describe "Models" do
   end
 
   [:multiuser, :singleuser].each do |mode|
-    context "when signed in in #{mode} mode", mode do
+    context "when signed in in #{mode} mode", mode, :after_first_run do
       let!(:creator) { create(:creator) }
       let!(:collection) { create(:collection) }
       let!(:library) do
@@ -167,6 +167,22 @@ RSpec.describe "Models" do
           expect(response).to have_http_status(:redirect)
           expect(private_model.reload).to be_public
           expect(private_creator.reload).to be_public
+        end
+
+        it "sets preview file", :as_moderator do
+          model = library.models.first
+          file = create(:model_file, model: model, filename: "test.jpg")
+          expect {
+            put "/models/#{model.to_param}", params: {model: {preview_file_id: file.id}}
+          }.to change { model.reload.preview_file }.from(nil).to(file)
+        end
+
+        it "sets entrypoint", :as_moderator do
+          model = library.models.first
+          file = create(:model_file, model: model, filename: "test.stl")
+          expect {
+            put "/models/#{model.to_param}", params: {model: {entrypoint_id: file.id}}
+          }.to change { model.reload.entrypoint }.from(nil).to(file)
         end
 
         it "adds links", :as_moderator do # rubocop:todo RSpec/ExampleLength

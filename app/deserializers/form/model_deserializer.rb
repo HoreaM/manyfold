@@ -4,6 +4,7 @@ module Form
       return nil unless @params
       allowed = @params.require(:model).permit(
         :preview_file_id, # i18n-tasks-use t("activerecord.attributes.model.preview_file")
+        :entrypoint_id, # i18n-tasks-use t("activerecord.attributes.model.entrypoint")
         :creator_id, # i18n-tasks-use t("activerecord.attributes.model.creator_id")
         :library_id, # i18n-tasks-use t("activerecord.attributes.model.library_id")
         :name, # i18n-tasks-use t("activerecord.attributes.model.name")
