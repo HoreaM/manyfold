@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   rescue_from ScopedSearch::QueryNotSupported, with: -> {
     flash[:alert] = t("application.search_error")
     flash[:query] = params[:q]
-    redirect_back_or_to root_path
+    redirect_back_or_to helpers.landing_page_path
   }
 
   unless Rails.env.test?

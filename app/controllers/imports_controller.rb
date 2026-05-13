@@ -7,7 +7,7 @@ class ImportsController < ApplicationController
 
   def create
     CreateObjectFromUrlJob.perform_later(url: @url, owner: current_user)
-    redirect_to root_url, notice: t(".success")
+    redirect_to helpers.landing_page_path, notice: t(".success")
   end
 
   private

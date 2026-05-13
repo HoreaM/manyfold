@@ -28,6 +28,11 @@ class Users::SessionsController < Devise::SessionsController
 
   protected
 
+  # The path used after sign in.
+  def after_sign_in_path_for(resource)
+    helpers.landing_page_path
+  end
+
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
@@ -42,7 +47,7 @@ class Users::SessionsController < Devise::SessionsController
     if !SiteSettings.multiuser_enabled? || User.with_role(:administrator).first.first_use?
       sign_in(:user, User.with_role(:administrator).first)
       flash.discard
-      redirect_back_or_to root_path, alert: nil
+      redirect_back_or_to helpers.landing_page_path, alert: nil
     end
   end
 

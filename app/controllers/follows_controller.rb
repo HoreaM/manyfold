@@ -67,14 +67,14 @@ class FollowsController < ApplicationController
     authorize Federails::Following, :create?
     @actor = Federails::Actor.find_param(params[:id])
     current_user.follow(@actor)
-    redirect_back_or_to root_url, notice: t(".followed", actor: @actor.at_address)
+    redirect_back_or_to helpers.landing_page_path, notice: t(".followed", actor: @actor.at_address)
   end
 
   def unfollow_remote_actor
     authorize Federails::Following, :destroy?
     @actor = Federails::Actor.find_param(params[:id])
     current_user.unfollow(@actor)
-    redirect_back_or_to root_url, notice: t(".unfollowed", actor: @actor.at_address)
+    redirect_back_or_to helpers.landing_page_path, notice: t(".unfollowed", actor: @actor.at_address)
   end
 
   def create
