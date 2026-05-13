@@ -134,8 +134,8 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
       # match preview file
       data[:preview_file] = model.model_files.find_by(filename: data[:preview_file])
       # match entrypoint
-      data[:entrypoint_fragment] = model.model_files.find_by(filename: data.dig(:entrypoint, :fragment))
-      data[:entrypoint] = model.model_files.find_by(filename: data.dig(:entrypoint, :path))
+      data[:entrypoint_fragment] = model.model_files.find_by(filename: data[:entrypoint_fragment])
+      data[:entrypoint] = model.model_files.find_by(filename: data[:entrypoint])
       # Set file data
       data.delete(:model_files)&.each do |file|
         model.model_files.find_by(filename: file.delete(:filename))&.update(file)
