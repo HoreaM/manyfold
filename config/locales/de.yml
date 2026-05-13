@@ -469,7 +469,7 @@ de:
       unrelated_tag_count:
         one: "%{count} nicht relevanter Tag versteckt"
         other: "%{count} nicht relevante Tags versteckt"
-    tagline: Hilft dir dabei, deine 3D-Druck-Dateien zu verwalten
+    tagline: Hilft dir, deine 3D-Modelle zu verwalten
     tags_card:
       skip_tags: Tag-Liste überspringen
     title: Manyfold
