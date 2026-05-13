@@ -28,7 +28,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     options = combine_options options, attributes_from_path_template(model.library, model.path)
     # Add additional tags
     tag_list = tags_from_directory_name(model.path) + tags_from_path_template(model.library, model.path)
-    options[:tag_list] = options[:tag_list] + remove_stop_words(tag_list.uniq)
+    options[:tag_list] = (options[:tag_list] || []) + remove_stop_words(tag_list.uniq)
     # Set preview file
     options = combine_options options, identify_preview_file(model)
     # Store new metadata
@@ -134,8 +134,8 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
       # match preview file
       data[:preview_file] = model.model_files.find_by(filename: data[:preview_file])
       # match entrypoint
-      data[:entrypoint_fragment] = model.model_files.find_by(filename: data.dig(:entrypoint, :fragment))
-      data[:entrypoint] = model.model_files.find_by(filename: data.dig(:entrypoint, :path))
+      data[:entrypoint_fragment] = model.model_files.find_by(filename: data[:entrypoint_fragment])
+      data[:entrypoint] = model.model_files.find_by(filename: data[:entrypoint])
       # Set file data
       data.delete(:model_files)&.each do |file|
         model.model_files.find_by(filename: file.delete(:filename))&.update(file)
