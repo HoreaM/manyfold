@@ -20,7 +20,13 @@ module DataPackage
         sensitive: @object.sensitive,
         contributors: @object.creator ? [CreatorSerializer.new(@object.creator).serialize] : nil,
         collections: @object.collections.map { |c| CollectionSerializer.new(c).serialize },
-        links: @object.links.map { |it| LinkSerializer.new(it).serialize }
+        links: @object.links.map { |it| LinkSerializer.new(it).serialize },
+        entrypoint: (if @object.entrypoint
+                       {
+                         path: @object.entrypoint.filename,
+                         fragment: @object.entrypoint_fragment
+                       }.compact
+                     end)
       }.compact
     end
   end

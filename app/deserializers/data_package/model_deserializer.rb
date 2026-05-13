@@ -12,7 +12,9 @@ module DataPackage
         license: @object.dig("licenses", 0, "name"),
         model_files: @object["resources"]&.map { |it| ModelFileDeserializer.new(it).deserialize },
         creator: CreatorDeserializer.new(@object["contributors"]&.find { |it| it["roles"].include?("creator") }).deserialize,
-        collections: (@object["collections"] || []).map { |it| CollectionDeserializer.new(it).deserialize }
+        collections: (@object["collections"] || []).map { |it| CollectionDeserializer.new(it).deserialize },
+        entrypoint: @object.dig("entrypoint", "path"),
+        entrypoint_fragment: @object.dig("entrypoint", "fragment")
       }.compact
     end
 

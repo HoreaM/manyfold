@@ -49,6 +49,17 @@ RSpec.describe DataPackage::ModelSerializer do
       expect(output[:image]).to be_nil
     end
 
+    it "includes entrypoint if set" do
+      object.entrypoint = object.model_files.find_by(filename: "model.stl")
+      expect(output[:entrypoint][:path]).to eq "model.stl"
+    end
+
+    it "includes entrypoint fragment if set" do
+      object.entrypoint = object.model_files.find_by(filename: "model.stl")
+      object.entrypoint_fragment = "main"
+      expect(output[:entrypoint][:fragment]).to eq "main"
+    end
+
     it "includes tags in keywords" do
       expect(output[:keywords]).to include(
         "Tag #0",
