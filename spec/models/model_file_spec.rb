@@ -12,6 +12,22 @@ RSpec.describe ModelFile do
     expect(build(:model, name: SecureRandom.alphanumeric(256))).not_to be_valid
   end
 
+  it "allows subfolders in filenames" do
+    expect(build(:model_file, filename: "test/model.stl")).to be_valid
+  end
+
+  {
+    "C:/autoexec.bat" => "C/autoexec.bat",
+    "COM1" => "file",
+    "/etc/passwd" => "etc/passwd",
+    "../../../../etc/passwd" => "etc/passwd"
+  }.each_pair do |filename, sanitized|
+    it "silently sanitizes filenames (#{filename} to #{sanitized})" do
+      m = build(:model_file, filename: filename)
+      expect(m.filename).to eq sanitized
+    end
+  end
+
   it "is not valid without being part of a model" do
     expect(build(:model_file, model: nil)).not_to be_valid
   end
@@ -155,6 +171,18 @@ RSpec.describe ModelFile do
       file.update!(filename: "newname.3mf")
       expect(File.exist?(File.join(library.path, "model_one/part_1.3mf"))).to be false
       expect(File.exist?(File.join(library.path, "model_one/newname.3mf"))).to be true
+    end
+
+    it "can move file into subdolder" do # rubocop:disable RSpec/MultipleExpectations
+      file.update!(filename: "subfolder/part_1.3mf")
+      expect(File.exist?(File.join(library.path, "model_one/part_1.3mf"))).to be false
+      expect(File.exist?(File.join(library.path, "model_one/subfolder/part_1.3mf"))).to be true
+    end
+
+    it "silently sanitizes filename changes" do # rubocop:disable RSpec/MultipleExpectations
+      file.update(filename: "../newname.3mf")
+      expect(file).to be_valid
+      expect(file.filename).to eq "newname.3mf"
     end
 
     it "rejects filename change if MIME type would change" do # rubocop:disable RSpec/MultipleExpectations
