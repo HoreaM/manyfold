@@ -4,7 +4,7 @@ module ModelsHelper
     sections = {}
     min_section_size = [2, (files.count * 0.05).round].max
     min_prefix_length = 3
-    names = files.map { |it| File.basename(it.filename, ".*").downcase }
+    names = files.map { |it| it.filename.chomp(File.extname(it.filename)).downcase }
     slice = names.map(&:length).max
     while slice > min_prefix_length
       slice -= 1
