@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def landing_page_path
+    root_path
+  end
+
   def site_name(default: translate("application.title"))
     SiteSettings.site_name.presence || default
   end
