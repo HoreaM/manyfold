@@ -31,6 +31,8 @@ class ModelFile < ApplicationRecord
   has_many :duplicate_unsupported_versions, class_name: "ModelFile", foreign_key: "presupported_version_id",
     inverse_of: :presupported_version, dependent: :nullify
 
+  normalizes :filename, with: ->(filename) { normalize_filename(filename) }
+
   validates :filename, presence: true, length: {maximum: 255}, uniqueness: {scope: :model}, stable_mime_type: true, change_case_only: true
   validate :presupported_version_is_presupported
   validate :presupported_files_cannot_have_presupported_version
@@ -291,5 +293,16 @@ class ModelFile < ApplicationRecord
 
   def clear_presupported_relation
     unsupported_version&.update presupported_version: nil
+  end
+
+  class << self
+    private
+
+    def normalize_filename(filename)
+      parts = filename.split(File::SEPARATOR).compact_blank
+      parts.delete("..")
+      parts.delete(".")
+      File.join(parts.map { |it| Zaru.sanitize!(it) })
+    end
   end
 end
