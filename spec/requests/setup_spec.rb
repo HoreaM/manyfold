@@ -17,8 +17,16 @@ RSpec.describe "First setup" do
       end
 
       context "when signed in as new admin", :as_administrator do
-        [
+        [ # rubocop:disable Performance/CollectionLiteralInLoop
+          "/",
           "/dashboard",
+          "/models",
+          "/models/new",
+          "/imports/new",
+          "/creators",
+          "/creators/new",
+          "/collections",
+          "/collections/new"
         ].each do |path|
           it "redirects from #{path} to library creation" do
             get path
