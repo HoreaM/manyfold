@@ -1,7 +1,7 @@
 module ApplicationHelper
   def landing_page_path
     SiteSettings.clear_cache
-    preference = SiteSettings.default_landing_page
+    preference = current_user&.landing_page || SiteSettings.default_landing_page
     case preference
     when "all_models"
       models_path
