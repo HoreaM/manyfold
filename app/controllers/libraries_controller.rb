@@ -1,6 +1,7 @@
 class LibrariesController < ApplicationController
   before_action :get_library, except: [:index, :new, :create, :preview]
   skip_after_action :verify_policy_scoped, only: [:index]
+  skip_before_action :set_up_first_library, only: [:new, :create]
 
   def index
     redirect_to new_library_path and return if Library.all.empty? # rubocop:disable Pundit/UsePolicyScope

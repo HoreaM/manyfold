@@ -70,6 +70,12 @@ RSpec.describe "First setup" do
             expect(response).to redirect_to(new_library_path)
           end
         end
+
+        it "loads library creation page properly after redirection" do
+          get "/"
+          follow_redirect!
+          expect(response).to have_http_status :success
+        end
       end
     end
   end
