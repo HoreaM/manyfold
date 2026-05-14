@@ -147,6 +147,7 @@ de:
         encrypted_password: Verschlüsseltes Passwort
         failed_attempts: Fehlversuche
         interface_language: Webseiten Sprache
+        landing_page:
         last_sign_in_at: Letzte Anmeldung am
         last_sign_in_ip: IP der letzten Anmeldung
         locked_at: Gesperrt am

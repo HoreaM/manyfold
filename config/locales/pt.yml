@@ -147,6 +147,7 @@ pt:
         encrypted_password: Palavra-passe cifrada
         failed_attempts: Tentativas falhadas
         interface_language:
+        landing_page:
         last_sign_in_at: Última entrada em
         last_sign_in_ip: Última entrada com IP
         locked_at: Bloqueado em

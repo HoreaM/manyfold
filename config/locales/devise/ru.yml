@@ -120,6 +120,8 @@ ru:
         interface_language:
           autodetect:
           help:
+        landing_page:
+          help:
         sensitive_content:
           help:
           hide:

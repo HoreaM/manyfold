@@ -147,6 +147,7 @@ zh-CN:
         encrypted_password: 密码被加密
         failed_attempts: 失败尝试
         interface_language: 界面语言
+        landing_page:
         last_sign_in_at: 最后登录于
         last_sign_in_ip: 最后登录的 IP
         locked_at: 锁定于

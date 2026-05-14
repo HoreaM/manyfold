@@ -120,6 +120,8 @@ es:
         interface_language:
           autodetect: Utilizar la configuración del navegador
           help: 'Nota: es posible que algunos textos no traducidos sigan apareciendo en inglés.'
+        landing_page:
+          help:
         sensitive_content:
           help: Afecta al modo en que se mostrará el contenido marcado como "sensible"
           hide: Ocultar completamente
