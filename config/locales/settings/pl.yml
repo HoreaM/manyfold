@@ -11,6 +11,9 @@ pl:
       about:
         help_html: Pokazane na stronie o instancji; Możesz użyć <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
         label: O tej instancji
+      default_landing_page:
+        help:
+        label:
       heading: Wygląd
       information: Informacje
       rules:
@@ -105,6 +108,12 @@ pl:
       thingiverse_api_key:
         help_html:
         label:
+    landing_pages:
+      all_collections:
+      all_creators:
+      all_models:
+      dashboard:
+      my_models:
     multiuser:
       approve_signups:
         help: Wszystkie nowe konta muszą zostać zatwierdzone przez moderatora, zanim będą oni mogli się zalogować.

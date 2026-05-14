@@ -11,6 +11,9 @@ ja:
       about:
         help_html: アバウトページに掲載。<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdownを</a>使用することができます。
         label: このインスタンスについて
+      default_landing_page:
+        help:
+        label:
       heading: 外観
       information: インフォメーション
       rules:
@@ -105,6 +108,12 @@ ja:
       thingiverse_api_key:
         help_html:
         label:
+    landing_pages:
+      all_collections:
+      all_creators:
+      all_models:
+      dashboard:
+      my_models:
     multiuser:
       approve_signups:
         help: すべての新規アカウントは、サインインする前にモデレーターの承認が必要です。
