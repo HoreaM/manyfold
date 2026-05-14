@@ -1,5 +1,6 @@
 class SettingsController < ApplicationController
   before_action :check_owner_permission
+  before_action { SiteSettings.clear_cache }
 
   def update
     # Save site-wide settings if user is an admin
@@ -29,6 +30,7 @@ class SettingsController < ApplicationController
     SiteSettings.site_name = settings[:site_name]
     SiteSettings.site_tagline = settings[:site_tagline]
     SiteSettings.theme = settings[:theme]
+    SiteSettings.default_landing_page = settings[:default_landing_page]
     SiteSettings.about = settings[:about]
     SiteSettings.rules = settings[:rules]
     SiteSettings.support_link = settings[:support_link]
