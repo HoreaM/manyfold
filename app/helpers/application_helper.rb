@@ -1,6 +1,6 @@
 module ApplicationHelper
   def landing_page_path
-    root_path
+    dashboard_path
   end
 
   def site_name(default: translate("application.title"))
