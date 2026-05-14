@@ -1,6 +1,18 @@
 module ApplicationHelper
   def landing_page_path
-    dashboard_path
+    preference = SiteSettings.default_landing_page
+    case preference
+    when "all_models"
+      models_path
+    when "all_collections"
+      collections_path
+    when "all_creators"
+      creators_path
+    when "my_models"
+      models_path(owner: current_user&.to_param)
+    else # also "dashboard"
+      dashboard_path
+    end
   end
 
   def site_name(default: translate("application.title"))
