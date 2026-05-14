@@ -53,6 +53,17 @@ RSpec.describe "First setup" do
         end
       end
 
+      context "when setup partially complete", :as_member do
+        before do
+          create(:admin)
+        end
+
+        it "redirects non-admins to the about page" do
+          get "/"
+          expect(response).to redirect_to("/about")
+        end
+      end
+
       context "when signed in as new admin", :as_administrator do
         [ # rubocop:disable Performance/CollectionLiteralInLoop
           "/",

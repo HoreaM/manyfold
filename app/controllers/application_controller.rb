@@ -52,6 +52,8 @@ class ApplicationController < ActionController::Base
 
     if current_user&.is_administrator? && !current_user&.first_use?
       redirect_to(new_library_path)
+    else
+      redirect_to(about_path, notice: t("general.setup_mode"))
     end
   end
 
