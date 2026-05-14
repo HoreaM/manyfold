@@ -13,7 +13,7 @@ RSpec.describe "Imports", :after_first_run, :thingiverse_api_key do
 
         it "redirects back afterwards" do
           import
-          expect(response).to redirect_to("/")
+          expect(response).to redirect_to("/dashboard")
         end
 
         it "queues creation job with correct arguments" do

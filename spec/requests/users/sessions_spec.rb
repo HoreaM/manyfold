@@ -47,9 +47,9 @@ RSpec.describe "Users::Sessions" do
         let(:password) { SecureRandom.hex }
         let(:admin) { create(:admin, password: password, password_confirmation: password) }
 
-        it "succeeds and redirects to homepage with good credentials" do
+        it "succeeds and redirects to dashboard with good credentials" do
           post "/users/sign_in", params: {user: {email: admin.email, password: password}}
-          expect(response).to redirect_to("/")
+          expect(response).to redirect_to("/dashboard")
         end
 
         it "fails with bad credentials" do
@@ -67,9 +67,9 @@ RSpec.describe "Users::Sessions" do
 
     context "when signed in", :as_member do
       describe "GET /users/sign_in" do
-        it "redirects to root" do
+        it "redirects to dashboard by default" do
           get "/users/sign_in"
-          expect(response).to redirect_to("/")
+          expect(response).to redirect_to("/dashboard")
         end
       end
     end
@@ -98,18 +98,18 @@ RSpec.describe "Users::Sessions" do
           expect(controller.current_user).to be_present
         end
 
-        it "redirects to root" do
+        it "redirects to dashboard by default" do
           get "/users/sign_in"
-          expect(response).to redirect_to("/")
+          expect(response).to redirect_to("/dashboard")
         end
       end
     end
 
     context "when signed in", :as_member do
       describe "GET /users/sign_in" do
-        it "redirects to root" do
+        it "redirects to dashboard by default" do
           get "/users/sign_in"
-          expect(response).to redirect_to("/")
+          expect(response).to redirect_to("/dashboard")
         end
       end
     end
