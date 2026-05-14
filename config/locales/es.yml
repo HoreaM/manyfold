@@ -104,8 +104,8 @@ es:
         ai_indexable: Permitir el uso para el entrenamiento de IA
         caption: Subtítulo
         creator_id: Creador
-        entrypoint:
-        entrypoint_fragment:
+        entrypoint: Punto de entrada
+        entrypoint_fragment: Fragmento de punto de entrada
         indexable: Permitir la indexación de búsquedas
         library_id: Biblioteca
         license: Licencia
@@ -427,7 +427,7 @@ es:
       version: Versión
     link_fields:
       text:
-        placeholder:
+        placeholder: Texto del enlace opcional
       url:
         delete: Borrar
         placeholder: Cualquier web relacionada

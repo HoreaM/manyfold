@@ -40,9 +40,9 @@ es:
       set_as_preview: Establecer como vista previa
     form:
       entrypoint:
-        help_html:
+        help_html: Opcionalmente, elija un archivo 3D que se utilizará como archivo de punto de entrada (o índice, o principal) para este modelo. Se utiliza para <a href="https://xrfragment.org/#XRF%20microformat">los fragmentos XRF</a>.
       entrypoint_fragment:
-        help:
+        help: 'Opcionalmente, establece un fragmento concreto (por ejemplo, #main) dentro del archivo seleccionado para que se utilice como punto de entrada.'
       notes:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:
