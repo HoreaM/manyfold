@@ -14,6 +14,43 @@ RSpec.describe "First setup" do
           follow_redirect!
           expect(response).to redirect_to("/users/edit")
         end
+
+        context "when entering user details" do
+          let(:password) { SecureRandom.hex(64) }
+          let(:params) {
+            {
+              user: {
+                email: "test@example.com",
+                username: "admin",
+                password: password,
+                password_confirmation: password
+              }
+            }
+          }
+
+          before do
+            get "/users/sign_in"
+            follow_redirect!
+            follow_redirect!
+          end
+
+          it "sets password" do
+            expect { patch "/users", params: params }.to change { User.first.encrypted_password }
+          end
+
+          it "sets username" do
+            expect { patch "/users", params: params }.to change { User.first.username }.to("admin")
+          end
+
+          it "sets email" do
+            expect { patch "/users", params: params }.to change { User.first.email }.to("test@example.com")
+          end
+
+          it "redirects to dashboard on success" do
+            patch "/users", params: params
+            expect(response).to redirect_to("/")
+          end
+        end
       end
 
       context "when signed in as new admin", :as_administrator do
