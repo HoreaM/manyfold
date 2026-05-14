@@ -247,8 +247,8 @@ RSpec.describe "Models" do
       describe "DELETE /models/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
         before { delete "/models/#{library.models.first.to_param}" }
 
-        it "redirects to model list after deletion", :as_moderator do
-          expect(response).to redirect_to("/")
+        it "redirects to landing page after deletion", :as_moderator do
+          expect(response).to redirect_to("/dashboard")
         end
 
         it "is denied to non-moderators", :as_contributor do

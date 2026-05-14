@@ -120,6 +120,8 @@ zh-CN:
         interface_language:
           autodetect: 使用浏览器设置
           help: 注意：某些未翻译的文字可能仍显示为英文。
+        landing_page:
+          help:
         sensitive_content:
           help: 影响标记为 "敏感" 的内容的显示方式
           hide: 完全隐藏

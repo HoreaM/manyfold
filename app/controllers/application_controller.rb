@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   rescue_from ScopedSearch::QueryNotSupported, with: -> {
     flash[:alert] = t("application.search_error")
     flash[:query] = params[:q]
-    redirect_back_or_to root_path
+    redirect_back_or_to helpers.landing_page_path
   }
 
   unless Rails.env.test?
@@ -26,8 +26,11 @@ class ApplicationController < ActionController::Base
   end
 
   def index
-    raise NotImplementedError
+    skip_policy_scope
+    redirect_to helpers.landing_page_path
   end
+
+  private
 
   def authenticate_admin_user!
     authenticate_user!
@@ -42,8 +45,6 @@ class ApplicationController < ActionController::Base
   def check_scan_status
     @scan_in_progress = Sidekiq::Queue.new("scan").size > 0
   end
-
-  private
 
   def restore_failed_search
     @query ||= flash[:query]

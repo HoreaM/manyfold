@@ -11,6 +11,9 @@ cs:
       about:
         help_html: Zobrazeno na stránce o aplikaci; Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
         label: O této instanci
+      default_landing_page:
+        help:
+        label:
       heading: Vzhled
       information: Informace
       rules:
@@ -105,6 +108,12 @@ cs:
       thingiverse_api_key:
         help_html:
         label:
+    landing_pages:
+      all_collections:
+      all_creators:
+      all_models:
+      dashboard:
+      my_models:
     multiuser:
       approve_signups:
         help: Všechny nové účty musí před přihlášením schválit moderátor.

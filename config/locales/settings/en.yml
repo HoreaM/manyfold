@@ -11,6 +11,9 @@ en:
       about:
         help_html: Shown on the about page; You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
         label: About this instance
+      default_landing_page:
+        help: The page that visitors and account holders will see by default.
+        label: Landing page
       heading: Appearance
       information: Information
       rules:
@@ -105,6 +108,12 @@ en:
       thingiverse_api_key:
         help_html: Create a "web app" in the <a href="https://www.thingiverse.com/developers/my-apps">Thingiverse developer console</a>, and paste the "app token" here.
         label: API key
+    landing_pages:
+      all_collections: Collections
+      all_creators: Creators
+      all_models: Models
+      dashboard: Dashboard
+      my_models: My Models
     multiuser:
       approve_signups:
         help: All new accounts must be approved by a moderator before they can sign in.

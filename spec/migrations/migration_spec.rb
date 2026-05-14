@@ -1,3 +1,5 @@
+require "rails_helper"
+
 # Test migrations
 #
 # This approach runs migrations up to a specified point, loads an SQL file at that point, then runs

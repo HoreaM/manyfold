@@ -8,15 +8,15 @@ RSpec.describe "Home" do
   end
 
   context "when signed in" do
-    describe "GET /" do
+    describe "GET /dashboard" do
       it "redirects to library creation if there isn't one already", :as_member do
-        get "/"
+        get "/dashboard"
         expect(response).to redirect_to("/libraries/new")
       end
 
-      it "shows the homepage if a library has been created", :as_member do
+      it "shows the dashboard if a library has been created", :as_member do
         create(:library)
-        get "/"
+        get "/dashboard"
         expect(response).to have_http_status(:success)
       end
     end

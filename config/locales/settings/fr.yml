@@ -11,6 +11,9 @@ fr:
       about:
         help_html:
         label:
+      default_landing_page:
+        help:
+        label:
       heading:
       information: Informations
       rules:
@@ -105,6 +108,12 @@ fr:
       thingiverse_api_key:
         help_html:
         label: Clé API
+    landing_pages:
+      all_collections:
+      all_creators:
+      all_models:
+      dashboard:
+      my_models:
     multiuser:
       approve_signups:
         help: Tous les nouveaux comptes doivent être approuvés par un modérateur avant de pouvoir se connecter.

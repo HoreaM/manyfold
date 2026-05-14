@@ -11,6 +11,9 @@ pt:
       about:
         help_html:
         label:
+      default_landing_page:
+        help:
+        label:
       heading:
       information:
       rules:
@@ -105,6 +108,12 @@ pt:
       thingiverse_api_key:
         help_html:
         label:
+    landing_pages:
+      all_collections:
+      all_creators:
+      all_models:
+      dashboard:
+      my_models:
     multiuser:
       approve_signups:
         help:

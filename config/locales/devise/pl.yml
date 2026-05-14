@@ -120,6 +120,8 @@ pl:
         interface_language:
           autodetect: Użyj ustawień przeglądarki
           help: 'Uwaga: niektóre nieprzetłumaczone teksty mogą nadal wyświetlać się w języku angielskim.'
+        landing_page:
+          help:
         sensitive_content:
           help: Wpływa na sposób wyświetlania treści oznaczonych jako "wrażliwych"
           hide: Ukryj całkowicie

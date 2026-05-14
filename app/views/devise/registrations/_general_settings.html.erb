@@ -14,6 +14,17 @@
     </div>
 
     <div>
+      <%= form.label :landing_page, class: "col-form-label" %>
+    </div>
+    <div>
+      <%= form.select :landing_page,
+            SiteSettings::LANDING_PAGES.map { |it| [t("settings.landing_pages.%{option}" % {option: it}), it] },
+            {selected: @user.landing_page || SiteSettings.default_landing_page},
+            {class: "form-select"} %>
+      <small class="form-text"><%= t ".landing_page.help" %></small>
+    </div>
+
+    <div>
       <%= form.label :sensitive_content_handling, User.human_attribute_name(:sensitive_content_handling), class: "col-form-label" %>
     </div>
     <div>

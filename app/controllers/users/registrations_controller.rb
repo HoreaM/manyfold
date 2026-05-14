@@ -100,6 +100,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         :current_password, # i18n-tasks-use t("activerecord.attributes.user.current_password")
         :interface_language, # i18n-tasks-use t("activerecord.attributes.user.interface_language")
         :sensitive_content_handling, # i18n-tasks-use t("activerecord.attributes.user.sensitive_content_handling")
+        :landing_page, # i18n-tasks-use t("activerecord.attributes.user.landing_page")
         :sort_order, # i18n-tasks-use t("activerecord.attributes.user.sort_order")
         pagination_settings: [
           :per_page
@@ -142,7 +143,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    SiteSettings.approve_signups ? root_path : welcome_path
+    SiteSettings.approve_signups ? helpers.landing_page_path : welcome_path
   end
 
   # The path used after sign up for inactive accounts.

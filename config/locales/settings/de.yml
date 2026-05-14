@@ -11,6 +11,9 @@ de:
       about:
         help_html: Gezeigt auf der Info-Seite; kannst du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden.
         label: Über diese Instanz
+      default_landing_page:
+        help:
+        label:
       heading: Erscheinungsbild
       information: Informationen
       rules:
@@ -109,6 +112,12 @@ de:
       thingiverse_api_key:
         help_html: Erstelle eine "Web App" in der <a href="https://www.thingiverse.com/developers/my-apps">Entwicklerkonsole von Thingiverse</a>und füge den App Token hier ein.
         label: API-Schlüssel
+    landing_pages:
+      all_collections:
+      all_creators:
+      all_models:
+      dashboard:
+      my_models:
     multiuser:
       approve_signups:
         help: Alle neuen Konten müssen von einem Moderator genehmigt werden, bevor man sich anmelden kann.

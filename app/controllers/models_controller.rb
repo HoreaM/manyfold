@@ -198,9 +198,9 @@ class ModelsController < ApplicationController
       format.html do
         if request.referer && (URI.parse(request.referer).path == model_path(@model))
           # If we're coming from the model page itself, we can't go back there
-          redirect_to root_path, notice: t(".success")
+          redirect_to helpers.landing_page_path, notice: t(".success")
         else
-          redirect_back_or_to root_path, notice: t(".success")
+          redirect_back_or_to helpers.landing_page_path, notice: t(".success")
         end
       end
       format.manyfold_api_v0 { head :no_content }

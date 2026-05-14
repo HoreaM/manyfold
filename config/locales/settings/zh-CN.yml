@@ -11,6 +11,9 @@ zh-CN:
       about:
         help_html: 如关于页面所示；您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
         label: 关于本实例
+      default_landing_page:
+        help:
+        label:
       heading: 外观
       information: 信息
       rules:
@@ -105,6 +108,12 @@ zh-CN:
       thingiverse_api_key:
         help_html: 在 <a href="https://www.thingiverse.com/developers/my-apps">Thingiverse 开发者控制台</a> 创建一个 "网络应用程序"，并在此粘贴 "应用程序令牌"。
         label: API 密钥
+    landing_pages:
+      all_collections:
+      all_creators:
+      all_models:
+      dashboard:
+      my_models:
     multiuser:
       approve_signups:
         help: 所有新账户必须经批准后才能登录。
