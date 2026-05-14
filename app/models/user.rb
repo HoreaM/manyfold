@@ -71,7 +71,7 @@ class User < ApplicationRecord
   attribute :sort_order, :integer # Explicit declaration of attribute so as not to break old data migrations
   enum :sort_order, {name: 0, recent: 1, updated: 2}, prefix: :sort_by, default: :name, validate: true
 
-  validates :landing_page, inclusion: {in: SiteSettings::LANDING_PAGES, allow_nil: true}
+  validates :landing_page, inclusion: {in: SiteSettings::LANDING_PAGES, allow_nil: true}, if: -> { has_attribute? :landing_page }
 
   has_many :access_grants, # rubocop:disable Rails/InverseOf
     class_name: "Doorkeeper::AccessGrant",
