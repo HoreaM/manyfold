@@ -32,10 +32,10 @@ class SiteSettings < RailsSettings::Base
 
   LANDING_PAGES = [
     "dashboard", # i18n-tasks-use t('settings.landing_pages.dashboard')
+    "my_models", # i18n-tasks-use t('settings.landing_pages.my_models')
     "all_models", # i18n-tasks-use t('settings.landing_pages.all_models')
     "all_creators", # i18n-tasks-use t('settings.landing_pages.all_creators')
-    "all_collections", # i18n-tasks-use t('settings.landing_pages.all_collections')
-    "my_models" # i18n-tasks-use t('settings.landing_pages.my_models')
+    "all_collections" # i18n-tasks-use t('settings.landing_pages.all_collections')
   ]
   field :default_landing_page, type: :string, default: "dashboard", validates: {inclusion: {in: LANDING_PAGES}}
 
