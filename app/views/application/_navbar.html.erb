@@ -3,7 +3,7 @@
         bs_theme: "dark"
       }.merge(tour_attributes(id: "main-navbar", title: t("tour.navbar.main.title", name: site_name), description: t("tour.navbar.main.description"))) do %>
   <div class='container-fluid'>
-    <a class="navbar-brand ms-2" href="<%= root_path %>" aria-label="<%= translate ".home" %>">
+    <a class="navbar-brand ms-2" href="<%= dashboard_path %>" aria-label="<%= translate ".home" %>">
       <%= image_tag site_icon, alt: site_name, height: "40px", class: "me-2" %>
       <span class="d-md-none"><%= site_name %></span>
     </a>
@@ -115,7 +115,7 @@
             </li>
           <% end %>
         <% end %>
-        <%- unless current_page?(controller: "/home", action: "index") %>
+        <%- unless current_page?(dashboard_path) %>
           <li id="nav-search" class="nav-item ms-1 me-3" data-turbo-permanent>
             <%= form_with url: models_path, method: :get, role: "search" do |f| %>
               <%= f.search_field :q, class: "form-control", placeholder: translate(".search"), aria_label: translate(".search"), aria_describedby: "button-search", value: @query || params[:q] %>

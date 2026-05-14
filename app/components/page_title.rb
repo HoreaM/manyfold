@@ -11,7 +11,7 @@ class Components::PageTitle < Components::Base
     nav aria: {label: "breadcrumb"}, class: "border-bottom pt-1 pb-1" do
       ol class: "breadcrumb" do
         li class: "breadcrumb-item" do
-          a(href: root_path) { Icon icon: "house", label: t("application.navbar.home") }
+          a(href: dashboard_path) { Icon icon: "house", label: t("application.navbar.home") }
         end
         @breadcrumbs.map do |text, path|
           li class: "breadcrumb-item" do
