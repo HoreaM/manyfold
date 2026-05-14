@@ -104,8 +104,8 @@ de:
         ai_indexable: Verwendung für KI-Training zulassen
         caption: Bildunterschrift
         creator_id: Autor
-        entrypoint:
-        entrypoint_fragment:
+        entrypoint: Einstiegspunkt
+        entrypoint_fragment: Einstiegspunkt Fragment
         indexable: Suchindizierung zulassen
         library_id: Sammlung
         license: Lizenz
@@ -427,7 +427,7 @@ de:
       version: Version
     link_fields:
       text:
-        placeholder:
+        placeholder: Optionaler Linktext/titel
       url:
         delete: Löschen
         placeholder: Verwandte Webseiten
