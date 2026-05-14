@@ -39,7 +39,13 @@ class ApplicationController < ActionController::Base
 
   def check_for_first_use
     authenticate_user! if User.all.empty? # rubocop:disable Pundit/UsePolicyScope
-    redirect_to(edit_user_registration_path) if current_user&.first_use?
+    if current_user&.first_use?
+      # Step 1, set up the user
+      redirect_to(edit_user_registration_path)
+    elsif current_user&.is_administrator? && Library.none?
+      # Step 2, set up a library
+      redirect_to(new_library_path)
+    end
   end
 
   def check_scan_status
