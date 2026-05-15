@@ -81,7 +81,9 @@ RSpec.describe "Users::Registrations" do
     end
 
     context "when signed in" do
-      before { sign_in admin }
+      before do
+        sign_in admin
+      end
 
       describe "GET /users/sign_up" do
         before { get "/users/sign_up" }
@@ -92,14 +94,13 @@ RSpec.describe "Users::Registrations" do
       end
 
       describe "POST /users" do
-        before { post "/users", params: post_options }
-
         it "redirects to root" do
+          post "/users", params: post_options
           expect(response).to redirect_to("/")
         end
 
         it "does not create a user" do
-          expect(User.count).to eq 1
+          expect { post "/users", params: post_options }.not_to change(User, :count)
         end
       end
 
@@ -194,7 +195,9 @@ RSpec.describe "Users::Registrations" do
     end
 
     context "when signed in" do
-      before { sign_in admin }
+      before do
+        sign_in admin
+      end
 
       describe "GET /users/sign_up" do
         before { get "/users/sign_up" }
@@ -205,13 +208,12 @@ RSpec.describe "Users::Registrations" do
       end
 
       describe "POST /users" do
-        before { post "/users", params: post_options }
-
         it "does not create a new user" do
-          expect(User.count).to eq 1
+          expect { post "/users", params: post_options }.not_to change(User, :count)
         end
 
         it "redirects to root" do
+          post "/users", params: post_options
           expect(response).to redirect_to("/")
         end
       end
@@ -237,17 +239,17 @@ RSpec.describe "Users::Registrations" do
       end
 
       describe "DELETE /users" do
-        before { delete "/users" }
-
         it "removes the user" do
-          expect(User.count).to eq 0
+          expect { delete "/users" }.to change(User, :count).by(-1)
         end
 
         it "redirects to root" do
+          delete "/users"
           expect(response).to redirect_to("/")
         end
 
         it "signs out the user" do
+          delete "/users"
           expect(controller.current_user).to be_nil
         end
       end
@@ -277,25 +279,27 @@ RSpec.describe "Users::Registrations" do
       end
 
       describe "POST /users with approval disabled" do
-        before {
+        before do
           allow(SiteSettings).to receive(:approve_signups).and_return(false)
           allow(AltchaSolution).to receive(:verify_and_save).and_return(true)
-          post "/users", params: post_options
-        }
+        end
 
         it "creates a new user" do
-          expect(User.count).to eq 2
+          expect { post "/users", params: post_options }.to change(User, :count).by(1)
         end
 
         it "creates user in approved state" do
+          post "/users", params: post_options
           expect(User.last).to be_approved
         end
 
         it "redirects to welcome page" do
+          post "/users", params: post_options
           expect(response).to redirect_to("/welcome")
         end
 
         it "signs in the user" do
+          post "/users", params: post_options
           expect(controller.current_user&.username).to eq post_options[:user][:username]
         end
       end
@@ -401,25 +405,27 @@ RSpec.describe "Users::Registrations" do
       end
 
       describe "POST /users with approval enabled" do
-        before {
+        before do
           allow(SiteSettings).to receive(:approve_signups).and_return(true)
           allow(AltchaSolution).to receive(:verify_and_save).and_return(true)
-          post "/users", params: post_options
-        }
+        end
 
         it "creates a new user" do
-          expect(User.count).to eq 2
+          expect { post "/users", params: post_options }.to change(User, :count).by(1)
         end
 
         it "creates user in pending state" do
+          post "/users", params: post_options
           expect(User.last).not_to be_approved
         end
 
         it "redirects to root" do
+          post "/users", params: post_options
           expect(response).to redirect_to("/")
         end
 
         it "does not sign in the user" do
+          post "/users", params: post_options
           expect(controller.current_user).to be_nil
         end
       end
@@ -444,13 +450,13 @@ RSpec.describe "Users::Registrations" do
 
     it "adds completion data to tour state" do
       patch "/users", params: completion_params, as: :json
-      expect(User.first.tour_state["completed"]).to include "new-item"
+      expect(current_user.tour_state["completed"]).to include "new-item"
     end
 
     it "adds completion data to existing tour state" do
-      User.first.update(tour_state: {"completed" => ["old-item"]})
+      current_user.update(tour_state: {"completed" => ["old-item"]})
       patch "/users", params: completion_params, as: :json
-      expect(User.first.tour_state["completed"]).to include("new-item", "old-item")
+      expect(current_user.tour_state["completed"]).to include("new-item", "old-item")
     end
 
     context "with an invalid user" do # rubocop:disable RSpec/MultipleMemoizedHelpers
