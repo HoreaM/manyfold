@@ -767,6 +767,7 @@ en:
     public: Publicly visible
     report: Report %{type}
     save: Save
+    setup_mode: This site is currently in setup mode; come back later!
     shared: Shared with local users
     view: View
   group_mailer:

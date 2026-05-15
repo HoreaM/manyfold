@@ -767,6 +767,7 @@ nl:
     public:
     report: Rapporteer %{type}
     save: Opslaan
+    setup_mode:
     shared:
     view: Bekijken
   group_mailer:

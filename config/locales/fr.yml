@@ -769,6 +769,7 @@ fr:
     public: Visibilité publique
     report: Rapporter %{type}
     save: Sauvegarder
+    setup_mode:
     shared: Partagé avec les utilisateurs locaux
     view: Afficher
   group_mailer:

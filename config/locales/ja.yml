@@ -767,6 +767,7 @@ ja:
     public:
     report:
     save:
+    setup_mode:
     shared:
     view:
   group_mailer:

@@ -767,6 +767,7 @@ zh-CN:
     public: 公开可见
     report:
     save: 保存
+    setup_mode:
     shared: 与本地用户共享
     view: 查看
   group_mailer:
