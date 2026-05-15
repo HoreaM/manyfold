@@ -35,6 +35,10 @@ RSpec.describe "Users::Registrations" do
     }
   }
 
+  before do
+    create(:library)
+  end
+
   context "when in single user mode", :singleuser do
     context "when signed out" do
       describe "GET /users/sign_up" do
@@ -120,7 +124,7 @@ RSpec.describe "Users::Registrations" do
         end
 
         it "updates password" do
-          expect(User.first.valid_password?(new_password)).to be true
+          expect(admin.reload.valid_password?(new_password)).to be true
         end
       end
 
@@ -234,7 +238,7 @@ RSpec.describe "Users::Registrations" do
         end
 
         it "updates password" do
-          expect(User.first.valid_password?(new_password)).to be true
+          expect(admin.reload.valid_password?(new_password)).to be true
         end
       end
 
