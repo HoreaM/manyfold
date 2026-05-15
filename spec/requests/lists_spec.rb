@@ -13,7 +13,7 @@ RSpec.describe "/lists", :after_first_run, :as_member do
   end
 
   describe "GET /show", :as_member do
-    let(:list) { create(:list, owner: User.last) }
+    let(:list) { create(:list, owner: current_user) }
 
     it "renders a successful response" do
       get list_url(list)
@@ -29,7 +29,7 @@ RSpec.describe "/lists", :after_first_run, :as_member do
   end
 
   describe "GET /edit", :as_member do
-    let(:list) { create(:list, owner: User.last) }
+    let(:list) { create(:list, owner: current_user) }
 
     it "renders a successful response" do
       get edit_list_url(list)
@@ -47,7 +47,7 @@ RSpec.describe "/lists", :after_first_run, :as_member do
 
       it "sets the correct owner" do
         post lists_url, params: {list: attributes_for(:list)}
-        expect(List.last.grants_permission_to?("own", User.last)).to be true
+        expect(List.last.grants_permission_to?("own", current_user)).to be true
       end
 
       it "redirects to the created list" do
@@ -71,7 +71,7 @@ RSpec.describe "/lists", :after_first_run, :as_member do
   end
 
   describe "PATCH /update", :as_member do
-    let(:list) { create(:list, owner: User.last) }
+    let(:list) { create(:list, owner: current_user) }
     let(:model) { create(:model) }
 
     context "with valid parameters" do
@@ -147,7 +147,7 @@ RSpec.describe "/lists", :after_first_run, :as_member do
   end
 
   describe "DELETE /destroy", :as_member do
-    let!(:list) { create(:list, owner: User.last) }
+    let!(:list) { create(:list, owner: current_user) }
 
     it "destroys the requested list" do
       expect { delete list_url(list) }.to change(List, :count).by(-1)
