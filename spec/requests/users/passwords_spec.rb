@@ -7,7 +7,7 @@ require "rails_helper"
 #                             PUT    /users/password(.:format)
 #                             POST   /users/password(.:format)
 
-RSpec.describe "Users::Passwords" do
+RSpec.describe "Users::Passwords", :after_first_run do
   let(:new_password) { Faker::Internet.password max_length: 32, min_length: 32, mix_case: true, special_characters: true }
   let(:reset_password_token) { SecureRandom.hex }
   let!(:admin) {

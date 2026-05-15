@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Activities" do
-  context "when logged in as admin", :as_administrator do
+  context "when logged in as admin", :after_first_run, :as_administrator do
     describe "GET /" do
       it "returns http success" do
         allow(ActiveJob::Status).to receive(:all).and_return([])

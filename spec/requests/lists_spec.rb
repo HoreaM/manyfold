@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "/lists", :as_member do
+RSpec.describe "/lists", :after_first_run, :as_member do
   describe "GET /index" do
     before do
       create(:list)

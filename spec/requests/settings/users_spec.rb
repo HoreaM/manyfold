@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "/settings/users", :multiuser do
+RSpec.describe "/settings/users", :after_first_run, :multiuser do
   describe "GET /index", :as_moderator do
     before { create(:user) }
 

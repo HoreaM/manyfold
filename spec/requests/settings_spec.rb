@@ -4,7 +4,7 @@ require "rails_helper"
 #                PATCH  /users/:user_id/settings(.:format)                                      settings#update
 #                PUT    /users/:user_id/settings(.:format)                                      settings#update
 
-RSpec.describe "Settings" do
+RSpec.describe "Settings", :after_first_run do
   context "when signed out" do
     describe "GET /settings" do
       it "returns access denied" do

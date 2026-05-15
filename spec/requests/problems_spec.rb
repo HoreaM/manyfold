@@ -3,7 +3,7 @@ require "rails_helper"
 # problems GET    /problems(.:format)                                                     problems#index
 #  problem PATCH  /problems/:id(.:format)                                                 problems#update
 
-RSpec.describe "Problems" do
+RSpec.describe "Problems", :after_first_run do
   context "when signed out" do
     it "needs testing when multiuser is enabled"
   end

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Uploads" do
+RSpec.describe "Uploads", :after_first_run do
   context "when signed out" do
     describe "POST /uploads" do
       it "is denied" do
