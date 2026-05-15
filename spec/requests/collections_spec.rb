@@ -9,10 +9,10 @@ require "rails_helper"
 #                  PUT    /collections/:id(.:format)                                              collections#update
 #                  DELETE /collections/:id(.:format)                                              collections#destroy
 
-RSpec.describe "Collections" do
+RSpec.describe "Collections", :after_first_run do
   it_behaves_like "Permittable", Collection
 
-  context "when signed out in multiuser mode", :after_first_run, :multiuser do
+  context "when signed out in multiuser mode", :multiuser do
     context "with public collection" do
       let!(:collection) { create(:collection, :public) }
 

@@ -17,5 +17,6 @@ RSpec.configure do |config|
 
   config.before(:each, :after_first_run) do
     create(:admin)
+    create(:library)
   end
 end

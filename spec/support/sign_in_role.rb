@@ -1,4 +1,12 @@
+module SignInHelpers
+  def current_user
+    @current_user.reload
+  end
+end
+
 RSpec.configure do |config|
+  config.include SignInHelpers, type: :request
+
   config.before(:each, :as_administrator) do
     @current_user = create(:admin)
     sign_in @current_user

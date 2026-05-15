@@ -24,14 +24,8 @@ RSpec.describe "Users::Sessions" do
       end
     end
 
-    context "when signed out after first use" do
+    context "when signed out after first use", :after_first_run do
       describe "GET /users/sign_in" do
-        let(:admin) { create(:admin) }
-
-        before do
-          admin.update(reset_password_token: nil)
-        end
-
         it "doesn't auto sign in" do
           get "/users/sign_in"
           expect(controller.current_user).to be_nil
@@ -65,7 +59,7 @@ RSpec.describe "Users::Sessions" do
       end
     end
 
-    context "when signed in", :as_member do
+    context "when signed in", :after_first_run, :as_member do
       describe "GET /users/sign_in" do
         it "redirects to dashboard by default" do
           get "/users/sign_in"
@@ -105,7 +99,7 @@ RSpec.describe "Users::Sessions" do
       end
     end
 
-    context "when signed in", :as_member do
+    context "when signed in", :after_first_run, :as_member do
       describe "GET /users/sign_in" do
         it "redirects to dashboard by default" do
           get "/users/sign_in"

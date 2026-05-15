@@ -13,10 +13,10 @@ require "rails_helper"
 #  merge_models POST   /models/merge(.:format)                           models#merge
 #   scan_model  POST   /models/:id/scan(.:format)                        models#scan
 
-RSpec.describe "Models" do
+RSpec.describe "Models", :after_first_run do
   it_behaves_like "Permittable", Model
 
-  context "when signed out in multiuser mode", :after_first_run, :multiuser do
+  context "when signed out in multiuser mode", :multiuser do
     context "with public model" do
       let!(:model) { create(:model, :public) }
 
@@ -99,7 +99,7 @@ RSpec.describe "Models" do
 
           it "doesn't get zipfile if only preview access available" do
             model.revoke_all_permissions(Role.find_by!(name: :member))
-            model.grant_permission_to("preview", User.last)
+            model.grant_permission_to("preview", current_user)
             get "/models/#{model.to_param}.zip"
             expect(response).to have_http_status(:forbidden)
           end
@@ -624,7 +624,7 @@ RSpec.describe "Models" do
                     filename: "test.stl"
                   }
                 }],
-                owner: User.last,
+                owner: current_user,
                 creator_id: creator.id.to_s,
                 collection_ids: [collection.id],
                 license: "MIT",
