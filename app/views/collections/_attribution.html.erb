@@ -6,10 +6,12 @@
         <%= link_to creator["name"], creator["url"] %><br>
       </li>
     <% end %>
-    <% if (c = collection.federails_actor.extensions["context"]) %>
+    <%- collections = Array.new(collection.federails_actor.extensions["context"] || []) %>
+    <% if (collections.any?) %>
       <li>
         <%= Icon icon: "collection", label: Collection.model_name.human %>
-        <%= link_to c["name"], c["url"] %><br>
+        <%= link_to collections.first["name"], collections.first["url"] %>
+        <%= content_tag(:span) { "+#{collections.count - 1}" } if collections.count > 1 %>
       </li>
     <% end %>
   <% else %>

@@ -60,8 +60,9 @@ class Components::ModelCard < Components::Base
         if (creator = @actor.extensions["attributedTo"])
           li { creator target: creator["url"], name: creator["name"] }
         end
-        if (collection = @actor.extensions["context"])
-          li { collection target: collection["url"], name: collection["name"] }
+        collections = Array.new(@actor.extensions["context"] || [])
+        if collections.any?
+          li { collection(target: collections.first["url"], name: collections.first["name"], count: collections.count) }
         end
       else
         li { creator target: @model.creator, name: @model.creator.name } if @model.creator
