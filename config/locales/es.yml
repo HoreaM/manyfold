@@ -767,6 +767,7 @@ es:
     public: Público
     report: Informe %{type}
     save: Guardar
+    setup_mode:
     shared: Compartido con usuarios locales
     view: Ver
   group_mailer:

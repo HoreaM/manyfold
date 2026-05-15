@@ -767,6 +767,7 @@ cs:
     public:
     report: Nahlásit %{type}
     save: Uložit
+    setup_mode:
     shared:
     view: Zobrazení
   group_mailer:

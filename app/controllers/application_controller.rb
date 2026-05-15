@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!, unless: -> { SiteSettings.multiuser_enabled? || has_signed_id? }
   around_action :switch_locale, if: -> { request.format.html? }
-  before_action :check_for_first_use
+  before_action :register_admin_user
+  before_action :set_up_first_library
   before_action :show_security_alerts
   before_action :check_scan_status
   before_action :restore_failed_search
@@ -37,9 +38,23 @@ class ApplicationController < ActionController::Base
     render plain: "401 Unauthorized", status: :unauthorized unless current_user&.is_administrator?
   end
 
-  def check_for_first_use
+  # Setup step 1, set admin user credentials
+  def register_admin_user
     authenticate_user! if User.all.empty? # rubocop:disable Pundit/UsePolicyScope
-    redirect_to(edit_user_registration_path) if current_user&.first_use?
+    if current_user&.first_use?
+      redirect_to(edit_user_registration_path)
+    end
+  end
+
+  # Setup step 2, add a library
+  def set_up_first_library
+    return unless Library.none?
+
+    if current_user&.is_administrator? && !current_user&.first_use?
+      redirect_to(new_library_path)
+    else
+      redirect_to(about_path, notice: t("general.setup_mode"))
+    end
   end
 
   def check_scan_status

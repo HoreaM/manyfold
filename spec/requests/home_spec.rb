@@ -7,15 +7,9 @@ RSpec.describe "Home" do
     it "needs testing when multiuser is enabled"
   end
 
-  context "when signed in" do
+  context "when signed in", :after_first_run, :as_member do
     describe "GET /dashboard" do
-      it "redirects to library creation if there isn't one already", :as_member do
-        get "/dashboard"
-        expect(response).to redirect_to("/libraries/new")
-      end
-
-      it "shows the dashboard if a library has been created", :as_member do
-        create(:library)
+      it "shows the dashboard" do
         get "/dashboard"
         expect(response).to have_http_status(:success)
       end

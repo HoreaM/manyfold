@@ -8,7 +8,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :detect_if_first_use, only: [:edit, :update]
   before_action :load_languages, only: [:edit, :update]
   before_action :configure_account_update_params, only: [:update]
-  skip_before_action :check_for_first_use, only: [:edit, :update]
+  skip_before_action :register_admin_user, only: [:edit, :update]
+  skip_before_action :set_up_first_library, only: [:edit, :update]
 
   respond_to :html, :json
 

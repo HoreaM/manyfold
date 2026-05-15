@@ -767,6 +767,7 @@ pl:
     public:
     report: Zgłoś %{type}
     save: Zapisz
+    setup_mode:
     shared:
     view: Widok
   group_mailer:

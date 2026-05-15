@@ -4,6 +4,8 @@ class Users::SessionsController < Devise::SessionsController
   rate_limit to: 10, within: 3.minutes, only: :create
 
   before_action :random_delay, only: [:create]
+  skip_before_action :register_admin_user
+  skip_before_action :set_up_first_library
   before_action :auto_login_single_user
   # before_action :configure_sign_in_params, only: [:create]
 

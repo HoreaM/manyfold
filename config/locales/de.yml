@@ -769,6 +769,7 @@ de:
     public: Öffentlich sichtbar
     report: Melden %{type}
     save: Speichern
+    setup_mode:
     shared: mit Lokalen Nutzern geteilt
     view: Siehe
   group_mailer:
